@@ -1,25 +1,4 @@
-
 <div id="content">
-  <div class="box-top hidden-lg hidden-md hidden-sm ">
-    <div class="module sohomepage-slider ">
-      <div class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4"
-           data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"
-           data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes"
-           data-loop="no" data-hoverpause="yes">
-        <div class="yt-content-slide">
-          <a href="#"><img src="image/catalog/slideshow/home1/slider-1.jpg" alt="slider1" class="img-responsive"></a>
-        </div>
-        <div class="yt-content-slide">
-          <a href="#"><img src="image/catalog/slideshow/home1/slider-2.jpg" alt="slider2" class="img-responsive"></a>
-        </div>
-        <div class="yt-content-slide">
-          <a href="#"><img src="image/catalog/slideshow/home1/slider-3.jpg" alt="slider3" class="img-responsive"></a>
-        </div>
-      </div>
-
-      <div class="loadeding"></div>
-    </div>
-  </div>
   <div class="row">
     <app-sidebar></app-sidebar>
     <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 main-right">
@@ -31,9 +10,8 @@
                  data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"
                  data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes"
                  data-loop="no" data-hoverpause="yes">
-              <owl-carousel-o>
+              <owl-carousel-o [options]="bannerSlider">
                 <ng-template carouselSlide>
-
                   <div class="yt-content-slide">
                     <a href="#"><img src="image/catalog/slideshow/home1/slider-1.jpg" alt="slider1" class="img-responsive"></a>
                   </div>
@@ -54,8 +32,6 @@
           </div>
 
         </div>
-
-
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col3">
           <div class="modcontent clearfix">
             <div class="banners banners1">
@@ -367,6 +343,28 @@
         </div>
       </div>
 
+<<<<<<< HEAD
+  <!-- Listing tabs -->
+  <div class="module listingtab-layout1">
+    <h3 class="modtitle"><span>Trending items</span></h3>
+    <div id="so_listing_tabs_1" class="so-listing-tabs first-load">
+      <div class="loadeding"></div>
+      <div class="ltabs-wrap">
+        <div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars"
+             data-type_source="0" data-lg="5" data-md="3" data-sm="2" data-xs="1" data-margin="30">
+          <!--Begin Tabs-->
+          <div class="ltabs-tabs-wrap">
+            <span class="ltabs-tab-selected">Bathroom</span> <span class="ltabs-tab-arrow">▼</span>
+            <div class="item-sub-cat">
+              <ul class="ltabs-tabs cf">
+                <li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"><span
+                  class="ltabs-tab-label">Bedroom</span></li>
+                <li class="ltabs-tab " data-category-id="18" data-active-content=".items-category-18"><span
+                  class="ltabs-tab-label">Decor</span></li>
+                <li class="ltabs-tab " data-category-id="25" data-active-content=".items-category-25"><span
+                  class="ltabs-tab-label">Furniture</span></li>
+              </ul>
+=======
       <!-- Listing tabs -->
       <div class="module listingtab-layout1">
         <h3 class="modtitle"><span>Trending items</span></h3>
@@ -390,6 +388,7 @@
                 </div>
               </div>
               <!-- End Tabs-->
+>>>>>>> 6ba2090ad1fdb9a7ffdf58a6f0bf97bf5ee38da1
             </div>
 
             <div class="ltabs-items-container products-list grid">
