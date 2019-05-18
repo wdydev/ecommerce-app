@@ -12,6 +12,8 @@ import {RegisterComponent} from './register/register.component';
 import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {OrderInformationComponent} from './order-information/order-information.component';
+import {AddressesComponent} from './addresses/addresses.component';
+import {PayementMethodsComponent} from './payement-methods/payement-methods';
 
 
 
@@ -32,6 +34,9 @@ import {OrderInformationComponent} from './order-information/order-information.c
     OrderInformationComponent,
     CartComponent,
     CheckoutComponent,
+    AddressesComponent,
+    PayementMethodsComponent,
+
   ],
   providers: [],
 })
