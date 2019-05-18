@@ -7,8 +7,18 @@
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Admin dashboard</h2>
+    <h2 class="title">Products</h2>
+    <div class="row">
+      <button (click)="addProduct(addProductTemplate)">Add a product</button>
+    </div>
   </div>
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
+<ng-template #addProductTemplate>
+  <div class="modal-header">
+    <h3>Add a product</h3>
+  </div>
+  <div class="modal-body"></div>
+  <div class="modal-footer"></div>
+</ng-template>
