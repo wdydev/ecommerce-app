@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-frontend',
@@ -8,7 +9,7 @@ import {Component} from '@angular/core';
 export class HomeComponent {
   private bannerSlider: any;
 
-  constructor() {
+  constructor(private title: Title) {
     this.bannerSlider = {
       nav: true,
       dots: false,
@@ -40,6 +41,7 @@ export class HomeComponent {
         },
       }
     };
+    title.setTitle('Welcome to our E-commerce platform');
   }
 }
 
