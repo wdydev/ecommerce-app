@@ -10,6 +10,12 @@ import {LoginComponent} from './login/login.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {CategoryComponent} from './category/category.component';
 import {ProductComponent} from './product/product.component';
+import {RegisterComponent} from './register/register.component';
+import {MyAccountComponent} from './my-account/my-account.component';
+import {OrderHistoryComponent} from './order-history/order-history.component';
+import {OrderInformationComponent} from './order-information/order-information.component';
+
+
 
 
 @NgModule({
@@ -19,17 +25,17 @@ import {ProductComponent} from './product/product.component';
     RouterModule.forChild(routes)
   ],
   declarations: [
-
-    HomeComponent,
-    CartComponent,
-    CheckoutComponent,
     HomeComponent,
     LoginComponent ,
-    SidebarComponent,
+    SidebarComponent ,
+    RegisterComponent,
+    MyAccountComponent,
+    OrderHistoryComponent,
+    OrderInformationComponent,
+    CartComponent,
+    CheckoutComponent,
     CategoryComponent,
     ProductComponent
-
-
   ],
   providers: [],
 })
