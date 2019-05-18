@@ -8,11 +8,13 @@ import {CategoryComponent} from './category/category.component';
 import {ProductsComponent} from './products/products.component';
 import {OrdersComponent} from './orders/orders.component';
 import {CouponsComponent} from './coupons/coupons.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   declarations: [
     SidebarComponent,
