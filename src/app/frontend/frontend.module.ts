@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router';
 import {routes} from './frontend.routes';
 import {CommonModule} from '@angular/common';
 import {CarouselModule} from 'ngx-owl-carousel-o';
+import {CartComponent} from './cart/cart.component';
+import {CheckoutComponent} from './checkout/checkout.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
     RouterModule.forChild(routes)
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CartComponent,
+    CheckoutComponent
   ],
   providers: [],
 })
