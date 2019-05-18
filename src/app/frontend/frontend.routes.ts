@@ -46,11 +46,15 @@ export const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
+
   {
-    path: 'category', component: CategoryComponent
+    path: 'category/:slug',
+    component: CategoryComponent
   },
+
   {
-    path: 'product', component: ProductComponent
+    path: 'product/:slug',
+    component: ProductComponent
   },
   {
     path: 'search', component: SearchComponent
