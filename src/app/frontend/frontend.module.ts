@@ -4,8 +4,11 @@ import {RouterModule} from '@angular/router';
 import {routes} from './frontend.routes';
 import {CommonModule} from '@angular/common';
 import {CarouselModule} from 'ngx-owl-carousel-o';
+import {CartComponent} from './cart/cart.component';
+import {CheckoutComponent} from './checkout/checkout.component';
 import {LoginComponent} from './login/login.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+
 
 @NgModule({
   imports: [
@@ -14,7 +17,14 @@ import {SidebarComponent} from './sidebar/sidebar.component';
     RouterModule.forChild(routes)
   ],
   declarations: [
-    HomeComponent, LoginComponent , SidebarComponent
+
+    HomeComponent,
+    CartComponent,
+    CheckoutComponent,
+    HomeComponent,
+    LoginComponent ,
+    SidebarComponent
+
   ],
   providers: [],
 })
