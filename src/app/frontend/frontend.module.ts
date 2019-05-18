@@ -8,6 +8,8 @@ import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {LoginComponent} from './login/login.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import {CategoryComponent} from './category/category.component';
+import {ProductComponent} from './product/product.component';
 import {RegisterComponent} from './register/register.component';
 import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
@@ -32,6 +34,8 @@ import {OrderInformationComponent} from './order-information/order-information.c
     OrderInformationComponent,
     CartComponent,
     CheckoutComponent,
+    CategoryComponent,
+    ProductComponent
   ],
   providers: [],
 })
