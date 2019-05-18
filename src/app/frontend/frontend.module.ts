@@ -6,6 +6,9 @@ import {CommonModule} from '@angular/common';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {LoginComponent} from './login/login.component';
+import {SidebarComponent} from './sidebar/sidebar.component';
+
 
 @NgModule({
   imports: [
@@ -14,9 +17,14 @@ import {CheckoutComponent} from './checkout/checkout.component';
     RouterModule.forChild(routes)
   ],
   declarations: [
+
     HomeComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    HomeComponent,
+    LoginComponent ,
+    SidebarComponent
+
   ],
   providers: [],
 })
