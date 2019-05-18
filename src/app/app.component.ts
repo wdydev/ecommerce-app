@@ -1,5 +1,6 @@
 import {Component, Renderer2} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
+import {setTheme} from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +20,7 @@ export class AppComponent {
         renderer.removeClass(document.body, 'common-home');
       }
     });
+
+    setTheme('bs3');
   }
 }
