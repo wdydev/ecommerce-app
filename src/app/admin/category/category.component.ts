@@ -19,6 +19,6 @@ export class CategoryComponent {
   }
 
   public cancel(): void {
-    this.modal.close();
+    // this.modal.close();
   }
 }
