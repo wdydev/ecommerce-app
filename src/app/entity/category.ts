@@ -1,5 +1,6 @@
 export interface CategoryI {
   name: string;
+  slug: string;
   parent: string;
   attributes: Array<any>;
   description: string;
@@ -10,6 +11,7 @@ export interface CategoryI {
 
 export class Category implements CategoryI {
   public name: string;
+  public slug: string;
   public parent: string;
   public attributes: Array<any>;
   public description: string;
@@ -21,6 +23,7 @@ export class Category implements CategoryI {
   constructor(category: CategoryI) {
     this.name = category.name;
     this.parent = category.parent;
+    this.slug = category.slug;
     this.attributes = category.attributes || [];
     this.description = category.description;
     this.image = category.image;

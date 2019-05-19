@@ -1,24 +1,183 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a href="#">Admin</a></li>
+  <li><a href="#">Categories</a></li>
 </ul>
 
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Products</h2>
-    <div class="row">
-      <button (click)="addProduct(addProductTemplate)">Add a product</button>
+    <div class="block full">
+      <div class="block-title">
+        <button class="btn btn-success" (click)="productForm(productFormTemplate)">Add Product</button>
+      </div>
+      <div class="block-content">
+        <table class="table-responsive">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th><i class="fa fa-bolt"></i></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of products;">
+            <td>{{product.name}}</td>
+            <td>{{product.status}}</td>
+            <td>
+              <button class="btn btn-info btn-xs" (click)="productForm(productFormTemplate,product)">
+                <i class="fa f-pencil"></i>
+              </button>
+              <button class="btn btn-danger btn-xs" (click)="deleteDialog(deleteDialogTemplate,product)">
+                <i class="fa f-trash"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
-<ng-template #addProductTemplate>
-  <div class="modal-header">
-    <h3>Add a product</h3>
+
+<ng-template #productFormTemplate>
+  <div class="modal-header mfp-close-btn-in">
+    <h2 class="modal-title title">Add a product</h2>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
   </div>
-  <div class="modal-body"></div>
-  <div class="modal-footer"></div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="form">
+          <tabset>
+            <tab heading="Basic Configuration">
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="name">Name</label>
+                  <div class="col-md-8">
+                    <input id="name" class="form-control" formControlName="name" placeholder="Enter name"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4" for="category">Category</label>
+                  <div class="col-md-8">
+                    <select id="category" class="form-control" formControlName="category"
+                            (change)="getChildCategories()">
+                      <option value="">--none--</option>
+                      <option [ngValue]="cat" *ngFor="let cat of categories">
+                        {{cat.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-12" *ngIf="childCategories && childCategories.length > 0">
+                  <label class="col-md-4" for="category">Category</label>
+                  <div class="col-md-8">
+                    <select id="childCategories" class="form-control" formControlName="category" multiple="multiple">
+                      <option value="">--none--</option>
+                      <option [ngValue]="cat" *ngFor="let cat of childCategories">
+                        {{cat.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="basePrice">Base Price</label>
+                  <div class="col-md-8">
+                    <input id="basePrice" class="form-control" formControlName="basePrice" placeholder="Enter price"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="basePrice">SKU</label>
+                  <div class="col-md-8">
+                    <input id="sku" class="form-control" formControlName="sku" placeholder="Enter sku"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="name">Description</label>
+                  <div class="col-md-8">
+                  <textarea id="description" class="form-control" formControlName="description"
+                            placeholder="Enter description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label">Images</label>
+                  <div class="col-md-8">
+                    <aws-upload [multiple]="true" folder="products" (onupload)="fileUploaded($event)"></aws-upload>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label">Status</label>
+                  <div class="col-md-8">
+                    <select name="status" class="form-control" id="status" formControlName="status">
+                      <option value="" disabled>--select status--</option>
+                      <option [ngValue]="1">Enabled</option>
+                      <option [ngValue]="0">Disabled</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Attributes">
+              <ng-container formArrayName="attributes">
+                <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
+                  <div class="form-group col-md-12" formGroupName="{{i}}">
+                    <div class="col-md-8 col-md-offset-4">
+                      <div class="input-group">
+                        <input type="text" class="form-control" formControlName="name"
+                               placeholder="Enter attribute name"/>
+                        <span class="input-group-addon">
+                    <button class="btn btn-xs btn-danger" (click)="removeAttribute(i)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </span>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </tab>
+            <tab heading="Inventory">
+              <ng-container formArrayName="attributes">
+                <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
+                  <div class="form-group col-md-12" formGroupName="{{i}}">
+                    <div class="col-md-8 col-md-offset-4">
+                      <div class="input-group">
+                        <input type="text" class="form-control" formControlName="name"
+                               placeholder="Enter attribute name"/>
+                        <span class="input-group-addon">
+                    <button class="btn btn-xs btn-danger" (click)="removeAttribute(i)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </span>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </tab>
+          </tabset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="saveProduct()">save</button>
+    <button class="btn btn-danger" (click)="cancel()">cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteDialogTemplate>
+  <div class="modal-header">
+    <h3 class="title">Delete confirmation</h3>
+  </div>
+  <div class="modal-body">
+    <h3>Are you sure you want to delete this product?</h3>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="confirmDelete()">Yes</button>
+    <button class="btn btn-danger" (click)="cancel()">No</button>
+  </div>
 </ng-template>

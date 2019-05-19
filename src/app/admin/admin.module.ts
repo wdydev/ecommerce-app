@@ -14,6 +14,8 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {AwsUploadComponent} from '../components/aws.upload.component';
 import {UsersComponent} from './user/users.component';
 import {CouponService} from './coupons/coupon.service';
+import {ProductService} from './products/product.service';
+import {TabsModule} from 'ngx-bootstrap/tabs';
 
 @NgModule({
   imports: [
@@ -21,6 +23,7 @@ import {CouponService} from './coupons/coupon.service';
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     TooltipModule.forRoot(),
+    TabsModule.forRoot()
   ],
   declarations: [
     SidebarComponent,
@@ -34,7 +37,8 @@ import {CouponService} from './coupons/coupon.service';
   ],
   providers: [
     CategoryService,
-    CouponService
+    CouponService,
+    ProductService
   ],
 })
 export class AdminModule {

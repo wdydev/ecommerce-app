@@ -26,6 +26,15 @@ export class CategoryService {
     }
   }
 
+  public async getChildCategories(category: CategoryI): Promise<Array<CategoryI>> {
+    try {
+      const res: GetCatsResponse = await this.api.get(`/categories/children/${category._id}`).toPromise();
+      return res.categories || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
   private updateCategory(category: CategoryI): Promise<SaveCatResponse> {
     return this.api.patch(`/categories/${category._id}`, category).toPromise();
   }
