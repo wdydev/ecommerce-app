@@ -25,6 +25,8 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     ModalService
   ],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

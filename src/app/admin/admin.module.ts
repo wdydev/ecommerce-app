@@ -10,12 +10,16 @@ import {OrdersComponent} from './orders/orders.component';
 import {CouponsComponent} from './coupons/coupons.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CategoryService} from './category/category.service';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import {AwsUploadComponent} from '../components/aws.upload.component';
+import {UsersComponent} from './user/users.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule.forRoot(),
   ],
   declarations: [
     SidebarComponent,
@@ -23,7 +27,9 @@ import {CategoryService} from './category/category.service';
     CategoryComponent,
     ProductsComponent,
     OrdersComponent,
-    CouponsComponent
+    CouponsComponent,
+    AwsUploadComponent,
+    UsersComponent
   ],
   providers: [
     CategoryService
