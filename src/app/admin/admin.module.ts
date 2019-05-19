@@ -13,6 +13,7 @@ import {CategoryService} from './category/category.service';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {AwsUploadComponent} from '../components/aws.upload.component';
 import {UsersComponent} from './user/users.component';
+import {CouponService} from './coupons/coupon.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {UsersComponent} from './user/users.component';
     UsersComponent
   ],
   providers: [
-    CategoryService
+    CategoryService,
+    CouponService
   ],
 })
 export class AdminModule {
