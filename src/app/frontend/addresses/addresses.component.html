@@ -15,7 +15,7 @@
         </td>
 
         <td class="text-right">
-          <a href="product.html">Add Address</a>
+          <button class="btn btn-success" (click)="addressForm(addressFormTemplate)">Add Address</button>
         </td>
       </tr>
     </table>
@@ -80,4 +80,51 @@
   <!--Right Part End -->
 </div>
 <br/>
+
+<ng-template #addressFormTemplate>
+  <div class="modal-header mfp-close-btn-in">
+    <h2 class="modal-title title">Add a category</h2>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <select id="parent" class="form-control" [formControlName]="'parent'">
+              <option value="">--none--</option>
+              <option [ngValue]="cat._id" *ngFor="let cat of categories">
+                {{cat.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group"></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
 

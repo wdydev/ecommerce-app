@@ -1,3 +1,5 @@
+import {Address} from './address';
+
 export interface UserI {
   fullName: string;
   addresses: Array<Address>;
