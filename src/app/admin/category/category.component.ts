@@ -3,6 +3,7 @@ import {ModalService} from '../../services/modal.service';
 import {Category, CategoryI} from '../../entity/category';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from './category.service';
+import {ObjectID} from '../../entity/mongo.id';
 
 @Component({
   selector: 'app-admin-categories',
@@ -34,7 +35,7 @@ export class CategoryComponent implements OnInit {
 
   public addAttribute(): void {
     const control = this.form.get('attributes') as FormArray;
-    control.push(new FormGroup({name: new FormControl()}));
+    control.push(new FormGroup({name: new FormControl(), _id: new FormControl(ObjectID())}));
   }
 
   public removeAttribute(index: number) {
@@ -47,7 +48,7 @@ export class CategoryComponent implements OnInit {
   }
 
   public cancel(): void {
-    // this.modal.close();
+    this.modal.close();
   }
 
   public async saveCategory(): Promise<any> {
