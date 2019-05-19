@@ -28,7 +28,7 @@ export class CategoryComponent implements OnInit {
   }
 
   public cancel(): void {
-    this.modal.close();
+    // this.modal.close();
   }
 
   public async loadCategories(): Promise<void> {
