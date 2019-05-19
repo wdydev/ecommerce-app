@@ -1,14 +1,64 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a href="#">Admin</a></li>
+  <li><a href="#">Categories</a></li>
 </ul>
 
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Admin dashboard</h2>
+    <div class="block full">
+      <div class="block-title">
+        <button class="btn btn-success" (click)="categoryForm(categoryFormTemplate)">Add Category</button>
+      </div>
+    </div>
   </div>
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
+<ng-template #categoryFormTemplate>
+  <div class="modal-header mfp-close-btn-in">
+    <h2 class="modal-title title">Add a category</h2>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <select id="parent" class="form-control" [formControlName]="'parent'">
+              <option value="">--none--</option>
+              <option [ngValue]="cat._id" *ngFor="let cat of categories">
+                {{cat.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name</label>
+          <div class="col-md-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+                   [formControlName]="'name'"/>
+          </div>
+        </div>
+        <div class="form-group"></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
