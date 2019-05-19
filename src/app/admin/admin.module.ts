@@ -9,6 +9,7 @@ import {ProductsComponent} from './products/products.component';
 import {OrdersComponent} from './orders/orders.component';
 import {CouponsComponent} from './coupons/coupons.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CategoryService} from './category/category.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     OrdersComponent,
     CouponsComponent
   ],
-  providers: [],
+  providers: [
+    CategoryService
+  ],
 })
 export class AdminModule {
 
