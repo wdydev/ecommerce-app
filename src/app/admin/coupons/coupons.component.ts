@@ -64,4 +64,9 @@ export class CouponsComponent {
 
   }
 
+
+  public cancel(): void {
+    this.modal.close();
+  }
+
 }
