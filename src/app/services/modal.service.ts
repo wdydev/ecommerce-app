@@ -12,4 +12,8 @@ export class ModalService {
     this.instance = this.service.show(template);
     return this.instance;
   }
+
+  public close() {
+    this.instance.hide();
+  }
 }
