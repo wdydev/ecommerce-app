@@ -14,38 +14,47 @@ import {RegisterComponent} from './register/register.component';
 import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {OrderInformationComponent} from './order-information/order-information.component';
+import {AddressesComponent} from './addresses/addresses.component';
+import {PayementMethodsComponent} from './payement-methods/payement-methods';
 import {SearchComponent} from './search/search.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {FaqComponent} from './faq/faq.component';
-
-
+import {AccountSidebarComponent} from './account-sidebar/account-sidebar.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AddressService} from './addresses/address.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
     CarouselModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
-    LoginComponent ,
-    SidebarComponent ,
+    LoginComponent,
+    SidebarComponent,
     RegisterComponent,
     MyAccountComponent,
     OrderHistoryComponent,
     OrderInformationComponent,
     CartComponent,
     CheckoutComponent,
+    AddressesComponent,
+    PayementMethodsComponent,
     CategoryComponent,
     ProductComponent,
     SearchComponent,
     AboutUsComponent,
     ConfirmationComponent,
-    FaqComponent
+    FaqComponent,
+    AccountSidebarComponent,
   ],
-  providers: [],
+  providers: [
+    AddressService
+  ],
 })
 export class FrontendModule {
 
