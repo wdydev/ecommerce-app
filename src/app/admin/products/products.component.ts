@@ -14,3 +14,4 @@ export class ProductsComponent {
     this.modal.open(template);
   }
 }
+
