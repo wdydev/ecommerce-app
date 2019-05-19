@@ -44,4 +44,9 @@ export class CouponsComponent {
     await this.service.saveCoupon(this.form.value);
   }
 
+
+  public cancel(): void {
+    this.modal.close();
+  }
+
 }
