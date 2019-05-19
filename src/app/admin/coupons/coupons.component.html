@@ -63,7 +63,7 @@
 <ng-template #couponFormTemplate>
   <div class="modal-header mfp-close-btn-in">
     <h2 class="modal-title title">Add a coupon</h2>
-    <button type="button" class="mfp-close" (click)="addCoupon()">×</button>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
   </div>
 
   <div class="modal-body">
@@ -141,7 +141,7 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="saveCoupon()">Save</button>
-    <button type="button" class="btn btn-danger" (click)="categoryForm(categoryFormTemplate)">Cancel</button>
+    <button type="button" class="btn btn-danger"  (click)="cancel()">Cancel</button>
   </div>
 
 </ng-template>
