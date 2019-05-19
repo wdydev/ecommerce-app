@@ -21,31 +21,29 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {FaqComponent} from './faq/faq.component';
 import {AccountSidebarComponent} from './account-sidebar/account-sidebar.component';
-
-
+import {ReactiveFormsModule} from '@angular/forms';
+import {AddressService} from './addresses/address.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
     CarouselModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
-    LoginComponent ,
-    SidebarComponent ,
+    LoginComponent,
+    SidebarComponent,
     RegisterComponent,
     MyAccountComponent,
     OrderHistoryComponent,
     OrderInformationComponent,
     CartComponent,
     CheckoutComponent,
-
     AddressesComponent,
     PayementMethodsComponent,
-
-
     CategoryComponent,
     ProductComponent,
     SearchComponent,
@@ -54,7 +52,9 @@ import {AccountSidebarComponent} from './account-sidebar/account-sidebar.compone
     FaqComponent,
     AccountSidebarComponent,
   ],
-  providers: [],
+  providers: [
+    AddressService
+  ],
 })
 export class FrontendModule {
 
