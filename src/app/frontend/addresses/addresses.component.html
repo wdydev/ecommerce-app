@@ -1,4 +1,3 @@
-
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
   <li><a href="#">Order History</a></li>
@@ -8,7 +7,7 @@
   <!--Middle Part Start-->
   <div id="content" class="col-sm-9">
 
-    <table  class="table">
+    <table class="table">
       <tr>
         <td class="text-left">
           <h2 class="title">Addresses</h2>
@@ -19,8 +18,6 @@
         </td>
       </tr>
     </table>
-
-
 
 
     <div class="table-responsive">
@@ -36,35 +33,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let addr of addresses">
           <td class="text-center">
-             Address 1
+            {{addr.address}}
           </td>
-          <td class="text-center">  52557
-          </td>
-          <td class="text-center">Fairfield</td>
-          <td class="text-center">IOWA</td>
-          <td class="text-center">USA</td>
+          <td class="text-center">{{addr.address2}}</td>
+          <td class="text-center">{{addr.city}}</td>
+          <td class="text-center">{{addr.zipcode}}</td>
+          <td class="text-center">{{addr.state}}</td>
 
-          <td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i>   <i class="fa fa-trash-o"></i> </a>
-          </td>
-
-
-        </tr>
-        <tr>
           <td class="text-center">
-            Address 2
+            <button class="btn btn-info" (click)="addressForm(addressFormTemplate,addr)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-info" (click)="deleteAddress(addr)">
+              <i class="fa fa-trash"></i>
+            </button>
           </td>
-          <td class="text-center">  52557
-          </td>
-          <td class="text-center">Fairfield</td>
-          <td class="text-center">IOWA</td>
-          <td class="text-center">USA</td>
-
-          <td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i>   <i class="fa fa-trash-o"></i> </a>
-          </td>
-
-
         </tr>
         </tbody>
       </table>
@@ -74,7 +59,7 @@
   <!--Middle Part End-->
   <!--Right Part Start -->
 
-<app-account-sidebar> </app-account-sidebar>
+  <app-account-sidebar></app-account-sidebar>
 
 
   <!--Right Part End -->
@@ -89,42 +74,70 @@
   <div class="modal-body">
     <div class="row">
       <form [formGroup]="form">
+
+
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name">Name</label>
+          <label class="col-md-4 control-label" for="address">Address</label>
           <div class="col-md-8">
-            <select id="parent" class="form-control" [formControlName]="'parent'">
-              <option value="">--none--</option>
-              <option [ngValue]="cat._id" *ngFor="let cat of categories">
-                {{cat.name}}
-              </option>
-            </select>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address"
+                   [formControlName]="'address'"/>
           </div>
         </div>
+
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name">Name</label>
+          <label class="col-md-4 control-label" for="address2">Address 2</label>
           <div class="col-md-8">
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
-                   [formControlName]="'name'"/>
+            <input type="text" id="address2" name="address2" class="form-control" placeholder="Enter Address 2"
+                   [formControlName]="'address2'"/>
           </div>
         </div>
+
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name">Name</label>
+          <label class="col-md-4 control-label" for="city">City</label>
           <div class="col-md-8">
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
-                   [formControlName]="'name'"/>
+            <input type="text" id="city" name="city" class="form-control" placeholder="Enter City"
+                   [formControlName]="'city'"/>
           </div>
         </div>
+
+
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name">Name</label>
+          <label class="col-md-4 control-label" for="state">State</label>
           <div class="col-md-8">
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
-                   [formControlName]="'name'"/>
+            <input type="text" id="state" name="state" class="form-control" placeholder="Enter State"
+                   [formControlName]="'state'"/>
           </div>
         </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="zipcode">Zip Code</label>
+          <div class="col-md-8">
+            <input type="text" id="zipcode" name="zipcode" class="form-control" placeholder="Enter ZipCode"
+                   [formControlName]="'zipcode'"/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="country">Country</label>
+          <div class="col-md-8">
+            <input type="text" id="country" name="country" class="form-control" placeholder="Enter Country"
+                   [formControlName]="'country'"/>
+          </div>
+        </div>
+
+
         <div class="form-group"></div>
       </form>
     </div>
   </div>
-  <div class="modal-footer"></div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="saveAddress()">Save</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+
+
 </ng-template>
 
