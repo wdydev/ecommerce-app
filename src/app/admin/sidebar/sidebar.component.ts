@@ -13,6 +13,7 @@ export class SidebarComponent {
     coupons: Array<string>
     shipping?: Array<string>,
     logout?: Array<string>,
+    users?: Array<string>,
   };
 
   constructor() {
@@ -24,6 +25,7 @@ export class SidebarComponent {
       coupons: ['', 'admin', 'coupons'],
       shipping: ['', 'admin', 'shipping'],
       logout: ['', 'admin', 'logout'],
+      users: ['', 'admin', 'users'],
     };
   }
 

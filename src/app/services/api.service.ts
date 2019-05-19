@@ -27,16 +27,16 @@ export class ApiService {
     return this.client.post.apply(this.client, this.modifyArgs(arguments));
   }
 
-  public patch(url: string): Observable<any> {
-    return this.client.post.apply(this.client, this.modifyArgs(arguments));
+  public patch(url: string, data: any): Observable<any> {
+    return this.client.patch.apply(this.client, this.modifyArgs(arguments));
   }
 
   public put(url: string): Observable<any> {
-    return this.client.post.apply(this.client, this.modifyArgs(arguments));
+    return this.client.put.apply(this.client, this.modifyArgs(arguments));
   }
 
   public delete(url: string): Observable<any> {
-    return this.client.post.apply(this.client, this.modifyArgs(arguments));
+    return this.client.delete.apply(this.client, this.modifyArgs(arguments));
   }
 
 }
