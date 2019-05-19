@@ -18,9 +18,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
-    ModalModule.forRoot(),
-    ReactiveFormsModule
+    ModalModule.forRoot()
   ],
   providers: [
     ModalService
