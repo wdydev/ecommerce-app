@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-myaccount' ,
   templateUrl: './my-account.component.html'
 })
 
-export class MyAccountComponent {}
+export class MyAccountComponent {
+  private form:FormGroup;
+}

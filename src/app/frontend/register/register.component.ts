@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Register} from 'ts-node';
+import {FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -7,6 +8,8 @@ import {Register} from 'ts-node';
   templateUrl: './register.component.html'
 })
 
-export class RegisterComponent {}
+export class RegisterComponent {
+  private form: FormGroup;
+}
 
 
