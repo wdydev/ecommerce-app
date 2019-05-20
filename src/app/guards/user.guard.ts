@@ -21,7 +21,8 @@ export class UserGuard implements CanActivate {
     return this.api
       .get(`/users/token/${token}`)
       .toPromise()
-      .then(res => !!res.user).then(user => {
+      .then(res => res.user)
+      .then(user => {
         if (!user) {
           this.router.navigate(['login']);
           return false;

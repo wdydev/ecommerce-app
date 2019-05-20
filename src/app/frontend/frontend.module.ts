@@ -27,6 +27,7 @@ import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
+import {LoginService} from './login/login.service';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {GuardsModule} from '../guards/guards.module';
     AddressService,
     HomeService,
     ProductService,
+    LoginService
   ],
 })
 export class FrontendModule {
