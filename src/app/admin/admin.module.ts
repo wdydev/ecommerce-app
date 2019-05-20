@@ -16,6 +16,7 @@ import {UsersComponent} from './user/users.component';
 import {CouponService} from './coupons/coupon.service';
 import {ProductService} from './products/product.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
+import {StatusPipe} from '../pipes/status.pipe';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
     OrdersComponent,
     CouponsComponent,
     AwsUploadComponent,
-    UsersComponent
+    UsersComponent,
+    StatusPipe
   ],
   providers: [
     CategoryService,
