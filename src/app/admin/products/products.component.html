@@ -11,25 +11,29 @@
       <div class="block-title">
         <button class="btn btn-success" (click)="productForm(productFormTemplate)">Add Product</button>
       </div>
-      <div class="block-content">
-        <table class="table-responsive">
+      <div class="block-content table-responsive">
+        <table class="table table-hover">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Status</th>
-            <th><i class="fa fa-bolt"></i></th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Category</th>
+            <th class="text-left">Base price</th>
+            <th class="text-left">Status</th>
+            <th class="text-left"><i class="fa fa-bolt"></i></th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let product of products;">
             <td>{{product.name}}</td>
-            <td>{{product.status}}</td>
+            <td>{{product.category.name}}</td>
+            <td>${{product.basePrice | number:'1.2-2'}}</td>
+            <td>{{product.status|status}}</td>
             <td>
               <button class="btn btn-info btn-xs" (click)="productForm(productFormTemplate,product)">
-                <i class="fa f-pencil"></i>
+                <i class="fa fa-pencil"></i>
               </button>
               <button class="btn btn-danger btn-xs" (click)="deleteDialog(deleteDialogTemplate,product)">
-                <i class="fa f-trash"></i>
+                <i class="fa fa-trash"></i>
               </button>
             </td>
           </tr>
@@ -73,9 +77,10 @@
                   </div>
                 </div>
                 <div class="form-group col-md-12" *ngIf="childCategories && childCategories.length > 0">
-                  <label class="col-md-4" for="category">Category</label>
+                  <label class="col-md-4" for="subCategories">Sub Categories</label>
                   <div class="col-md-8">
-                    <select id="childCategories" class="form-control" formControlName="category" multiple="multiple">
+                    <select id="subCategories" name="subCategories" class="form-control" formControlName="subCategories"
+                            multiple="multiple" (change)="createAttributes()">
                       <option value="">--none--</option>
                       <option [ngValue]="cat" *ngFor="let cat of childCategories">
                         {{cat.name}}
@@ -121,42 +126,50 @@
               </div>
             </tab>
             <tab heading="Attributes">
-              <ng-container formArrayName="attributes">
-                <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
-                  <div class="form-group col-md-12" formGroupName="{{i}}">
-                    <div class="col-md-8 col-md-offset-4">
-                      <div class="input-group">
-                        <input type="text" class="form-control" formControlName="name"
-                               placeholder="Enter attribute name"/>
-                        <span class="input-group-addon">
-                    <button class="btn btn-xs btn-danger" (click)="removeAttribute(i)">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </span>
-                      </div>
-                    </div>
-                  </div>
-                </ng-container>
-              </ng-container>
+              <div class="row">
+                <div class="col-md-12">
+                  <ng-container formArrayName="attributes" *ngIf="form.controls.attributes.controls.length > 0">
+                    <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
+                      <ng-container [formGroupName]="i.toString()">
+                        <div class="form-group col-md-12">
+                          <label class="col-md-4 control-label">Attribute</label>
+                          <div class="col-md-8">
+                            {{attr.controls.name.value}}
+                            <button class="btn btn-success btn-xs pull-right" (click)="addOption(i)"
+                                    [tooltip]="'Add an option'">
+                              <i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <ng-container formArrayName="options"
+                                      *ngIf="attr.controls.options && attr.controls.options.controls && attr.controls.options.controls.length > 0">
+                          <ng-container *ngFor="let option of attr.controls.options.controls;let j = index;">
+                            <div class="form-group col-md-12" [formGroupName]="j.toString()">
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter option name"
+                                       formControlName="name"/>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Enter option price"
+                                         formControlName="price"/>
+                                  <span class="input-group-addon">
+                                  <button class="btn btn-xs btn-danger" (click)="removeOption(i,j)">
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+                                </span>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </div>
             </tab>
             <tab heading="Inventory">
-              <ng-container formArrayName="attributes">
-                <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
-                  <div class="form-group col-md-12" formGroupName="{{i}}">
-                    <div class="col-md-8 col-md-offset-4">
-                      <div class="input-group">
-                        <input type="text" class="form-control" formControlName="name"
-                               placeholder="Enter attribute name"/>
-                        <span class="input-group-addon">
-                    <button class="btn btn-xs btn-danger" (click)="removeAttribute(i)">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </span>
-                      </div>
-                    </div>
-                  </div>
-                </ng-container>
-              </ng-container>
             </tab>
           </tabset>
         </form>

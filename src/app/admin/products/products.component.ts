@@ -1,10 +1,11 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ModalService} from '../../services/modal.service';
-import {Product, ProductI} from '../../entity/product';
+import {Product, ProductAttributeI, ProductI} from '../../entity/product';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {ProductService} from './product.service';
 import {CategoryService} from '../category/category.service';
 import {CategoryI} from '../../entity/category';
+import {ObjectID} from '../../entity/mongo.id';
 
 @Component({
   selector: 'app-admin-products',
@@ -35,16 +36,11 @@ export class ProductsComponent implements OnInit {
       basePrice: new FormControl(),
       attributes: new FormArray([]),
       inventory: new FormArray([]),
-      subCategories: new FormArray([]),
+      subCategories: new FormControl(),
     });
     this.form.patchValue(this.product);
 
     await this.modal.open(template);
-  }
-
-  public addAttribute(): void {
-    const control = this.form.get('attributes') as FormArray;
-    control.push(new FormGroup({name: new FormControl()}));
   }
 
   public removeAttribute(index: number) {
@@ -60,22 +56,60 @@ export class ProductsComponent implements OnInit {
     this.modal.close();
   }
 
-  public async saveProduct(): Promise<any> {
-    try {
-      const save: ProductI = {...this.product, ...this.form.value};
-      const product: ProductI = await this.service.saveProduct(save);
-
-      this.cancel();
-      if (this.product._id) {
-        this.products = this.products.map(cat => cat._id === this.product._id ? product : cat);
-        return;
+  private createAttributesControls(): void {
+    const controls = [];
+    for (const attr of this.product.attributes) {
+      const options = [];
+      for (const option of attr.options) {
+        options.push(new FormGroup({
+          _id: new FormControl(option._id),
+          name: new FormControl(option.name),
+          price: new FormControl(option.price)
+        }));
       }
-
-      this.products.push(product);
-    } catch (e) {
-      // show a toast message here
-      this.cancel();
+      controls.push(new FormGroup({
+        name: new FormControl(attr.name),
+        _id: new FormControl(attr._id),
+        options: new FormArray(options)
+      }));
     }
+
+    this.form.setControl('attributes', new FormArray(controls));
+  }
+
+  public addOption(index: number): void {
+    const control = this.form.get('attributes') as FormArray;
+    const options = control.at(index).get('options') as FormArray;
+    options.push(new FormGroup({
+      _id: new FormControl(ObjectID()),
+      name: new FormControl(),
+      price: new FormControl(0)
+    }));
+  }
+
+  public removeOption(i: number, j: number) {
+    const control = this.form.get('attributes') as FormArray;
+    const options = control.at(i).get('options') as FormArray;
+    options.removeAt(j);
+  }
+
+  public createAttributes(): void {
+    const subCategories: Array<CategoryI> = this.form.get('subCategories').value;
+    if (subCategories.length === 0) {
+      this.form.setControl('attributes', new FormArray([]));
+      return;
+    }
+
+    const attributes: Array<ProductAttributeI> = subCategories
+    // @ts-ignore
+      .flatMap(subCategory => subCategory.attributes)
+      .map(attr => {
+        attr.options = [];
+        return attr;
+      });
+
+    this.product.attributes = attributes;
+    this.createAttributesControls();
   }
 
   public deleteDialog(template: TemplateRef<any>, product: ProductI) {
@@ -111,6 +145,34 @@ export class ProductsComponent implements OnInit {
   public getChildCategories() {
     const category = this.form.get('category').value as CategoryI;
     this.loadChildCategories(category);
+  }
+
+
+  makeSlug(str: string) {
+    return str.toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/$[^a-z0-9\-]#/g, '')
+      .replace(/[\-+]/g, '-');
+  }
+
+  public async saveProduct(): Promise<any> {
+    try {
+      const save: ProductI = {...this.product, ...this.form.value};
+      save.slug = this.makeSlug(save.name);
+
+      const product: ProductI = await this.service.saveProduct(save);
+
+      if (this.product._id) {
+        this.products = this.products.map(cat => cat._id === this.product._id ? product : cat);
+        return;
+      }
+
+      this.products.push(product);
+    } catch (e) {
+      console.log();
+      // show a toast message here
+    }
+    this.cancel();
   }
 
   public ngOnInit(): void {

@@ -1,14 +1,17 @@
+import {float} from 'aws-sdk/clients/lightsail';
+
 export function ObjectID() {
-  let ObjectId = (function() {
+  const ObjectId = (() => {
     let increment = Math.floor(Math.random() * (16777216));
-    let pid = Math.floor(Math.random() * (65536));
+    const pid = Math.floor(Math.random() * (65536));
     let machine = Math.floor(Math.random() * (16777216));
 
-    let setMachineCookie = function() {
-      let cookieList = document.cookie.split('; ');
-      for (let i in cookieList) {
-        let cookie = cookieList[i].split('=');
-        let cookieMachineId = parseInt(cookie[1], 10);
+    const setMachineCookie = () => {
+      const cookieList = document.cookie.split('; ');
+      // tslint:disable-next-line:forin
+      for (const i in cookieList) {
+        const cookie = cookieList[i].split('=');
+        const cookieMachineId = parseInt(cookie[1], 10);
         if (cookie[0] === 'mongoMachineId' && cookieMachineId && cookieMachineId >= 0 && cookieMachineId <= 16777215) {
           machine = cookieMachineId;
           break;
@@ -18,12 +21,12 @@ export function ObjectID() {
     };
     if (typeof (localStorage) !== typeof undefined) {
       try {
-        let mongoMachineId = parseInt(localStorage['mongoMachineId'], 10);
+        const mongoMachineId = parseInt(localStorage.getItem('mongoMachineId'), 10);
         if (mongoMachineId >= 0 && mongoMachineId <= 16777215) {
-          machine = Math.floor(localStorage['mongoMachineId']);
+          machine = Math.floor(localStorage.getItem('mongoMachineId') as any as float);
         }
         // Just always stick the value in.
-        localStorage['mongoMachineId'] = machine;
+        localStorage.setItem('mongoMachineId', machine.toString());
       } catch (e) {
         setMachineCookie();
       }
@@ -33,6 +36,7 @@ export function ObjectID() {
 
     function ObjId() {
       if (!(this instanceof ObjectId)) {
+        // @ts-ignore
         return new ObjectId(arguments[0], arguments[1], arguments[2], arguments[3]).toString();
       }
 
@@ -70,8 +74,8 @@ export function ObjectID() {
   };
 
   ObjectId.prototype.toArray = function() {
-    let strOid = this.toString();
-    let array = [];
+    const strOid = this.toString();
+    const array = [];
     let i;
     for (i = 0; i < 12; i++) {
       array[i] = parseInt(strOid.slice(i * 2, i * 2 + 2), 16);
@@ -90,16 +94,17 @@ export function ObjectID() {
       return 'Invalid ObjectId';
     }
 
-    let timestamp = this.timestamp.toString(16);
-    let machine = this.machine.toString(16);
-    let pid = this.pid.toString(16);
-    let increment = this.increment.toString(16);
+    const timestamp = this.timestamp.toString(16);
+    const machine = this.machine.toString(16);
+    const pid = this.pid.toString(16);
+    const increment = this.increment.toString(16);
     return '00000000'.substr(0, 8 - timestamp.length) + timestamp +
       '000000'.substr(0, 6 - machine.length) + machine +
       '0000'.substr(0, 4 - pid.length) + pid +
       '000000'.substr(0, 6 - increment.length) + increment;
   };
 
+  // @ts-ignore
   return new ObjectId().toString();
 }
 
@@ -114,7 +119,7 @@ export function equals(array1: any, array2: any) {
   }
 
   // compare lengths - can save a lot of time
-  if (array1.length != array2.length) {
+  if (array1.length !== array2.length) {
     return false;
   }
 
@@ -125,7 +130,7 @@ export function equals(array1: any, array2: any) {
       if (!array1[i].equals(array2[i])) {
         return false;
       }
-    } else if (array1[i] != array2[i]) {
+    } else if (array1[i] !== array2[i]) {
       // Warning - two different object instances will never be equal: {x:20} != {x:20}
       return false;
     }
