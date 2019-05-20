@@ -16,6 +16,10 @@ import {UsersComponent} from './user/users.component';
 import {CouponService} from './coupons/coupon.service';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UsersService} from './user/users.service';
+import {ProductService} from './products/product.service';
+import {TabsModule} from 'ngx-bootstrap/tabs';
+import {StatusPipe} from '../pipes/status.pipe';
+
 
 @NgModule({
   imports: [
@@ -23,6 +27,7 @@ import {UsersService} from './user/users.service';
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     TooltipModule.forRoot(),
+    TabsModule.forRoot()
   ],
   declarations: [
     SidebarComponent,
@@ -33,12 +38,14 @@ import {UsersService} from './user/users.service';
     CouponsComponent,
     AwsUploadComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    StatusPipe
   ],
   providers: [
     CategoryService,
     CouponService,
-    UsersService
+    UsersService,
+    ProductService
   ],
 })
 export class AdminModule {
