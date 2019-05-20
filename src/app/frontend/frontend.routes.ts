@@ -16,13 +16,10 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {FaqComponent} from './faq/faq.component';
 import {UserGuard} from '../guards/user.guard';
+import {UserNotAuth} from '../guards/user.not.auth';
 
 
 export const routes: Routes = [
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
   {
     path: 'my-account',
     children: [
@@ -62,7 +59,14 @@ export const routes: Routes = [
     component: CheckoutComponent
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [UserNotAuth]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [UserNotAuth]
   },
   {
     path: 'category/:slug',
