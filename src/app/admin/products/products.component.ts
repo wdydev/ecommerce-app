@@ -147,7 +147,6 @@ export class ProductsComponent implements OnInit {
     this.loadChildCategories(category);
   }
 
-
   makeSlug(str: string) {
     return str.toLowerCase()
       .replace(/\s+/g, '-')
