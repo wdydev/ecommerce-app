@@ -25,6 +25,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AddressService} from './addresses/address.service';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
+import {CartCalc} from '../pipes/cart.calc';
+import {PipesModule} from '../pipes/pipes.module';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {ProductService} from './product/product.service';
     CommonModule,
     CarouselModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   declarations: [
     HomeComponent,
@@ -53,12 +56,11 @@ import {ProductService} from './product/product.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-
   ],
   providers: [
     AddressService,
     HomeService,
-    ProductService
+    ProductService,
   ],
 })
 export class FrontendModule {
