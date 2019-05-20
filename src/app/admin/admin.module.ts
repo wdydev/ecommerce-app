@@ -18,8 +18,8 @@ import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UsersService} from './user/users.service';
 import {ProductService} from './products/product.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
-import {StatusPipe} from '../pipes/status.pipe';
 import {PipesModule} from '../pipes/pipes.module';
+import {UserDeatilService} from './user-detail/user-detail.service';
 
 
 @NgModule({
@@ -46,7 +46,8 @@ import {PipesModule} from '../pipes/pipes.module';
     CategoryService,
     CouponService,
     UsersService,
-    ProductService
+    ProductService,
+    UserDeatilService
   ],
 })
 export class AdminModule {
