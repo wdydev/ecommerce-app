@@ -8,17 +8,17 @@ export class AddressService {
   }
 
   public async getAddresses(): Promise<Array<Address>> {
-    const res = await this.api.get('/addresses').toPromise();
+    const res = await this.api.get('/users/addresses').toPromise();
     return res.addresses || [];
   }
 
   public async saveAddress(data) {
-    const res = await this.api.post('/address', data).toPromise();
+    const res = await this.api.post('/users/addresses', data).toPromise();
     return res.address;
   }
 
   public async deleteAddress(id: string) {
-    const res = await this.api.delete(`/address/${id}`).toPromise();
+    const res = await this.api.delete(`/users/addresses/${id}`).toPromise();
     return res.status === 200;
   }
 
