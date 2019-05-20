@@ -8,6 +8,7 @@ import {Address} from '../../entity/address';
   selector: 'app-addresses',
   templateUrl: './addresses.component.html'
 })
+
 export class AddressesComponent implements OnInit {
   private address: Address;
   private form: FormGroup;
