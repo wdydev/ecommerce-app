@@ -75,27 +75,30 @@
               <form [formGroup]="form">
                 <div class="form-group">
 
-                  <label class="col-md-4 control-label" for="maximum-cost">Card Owner</label>
-                  <div class="col-md-8">
-                    <input type="text" id="maxium-cost" name="maximum-cost" class="form-control"
-                           placeholder="Enter Maximum Cost"
-                           formControlName="maximumCost"/><br>
-                  </div>
 
                   <label class="col-md-4 control-label" for="start-dae">Card Number</label>
                   <div class="col-md-8">
                     <input type="text" id="start-dae" name="start-date" class="form-control"
                            placeholder="Enter Start Date"
+                            formControlName="startDate"/><br>
+                  </div>
+
+
+                  <label class="col-md-4 control-label" for="start-dae">Card Type</label>
+                  <div class="col-md-8">
+                    <input type="text" id="card-Type" name="card-Type" class="form-control"
+                           placeholder="Enter Start Date"
                            formControlName="startDate"/><br>
                   </div>
 
-                  <label class="col-md-4 control-label" for="end-dae">CVS </label>
+
+                  <label class="col-md-4 control-label" for="end-dae">Card Number </label>
                   <div class="col-md-8">
                     <input type="text" id="end-dae" name="end-date" class="form-control" placeholder="Enter End Date"
                            formControlName="endDate"/><br>
                   </div>
 
-                  <label class="col-md-4 control-label" for="minimum-cost">Expiration </label>
+                  <label class="col-md-4 control-label" for="minimum-cost">Expiration Date</label>
                   <div class="col-md-8">
                     <input type="text" id="minimm-cost" name="minimum-cost" class="form-control"
                            placeholder="Enter Minimum Cost"

@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {CategoryI} from '../../entity/category';
+import {CouponI} from '../../entity/coupon';
 
 @Injectable()
 export class CouponService {
   constructor(private api: ApiService) {
   }
 
-  public async getCoupons(): Promise<Array<CategoryI>> {
+  public async getCoupons(): Promise<Array<CouponI>> {
     const res = await this.api.get('/coupons').toPromise();
-    return res;
+    return res.coupons || [];
   }
 
   public async saveCoupon(data) {
