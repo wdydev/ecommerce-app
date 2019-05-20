@@ -9,6 +9,10 @@ export interface CategoryI {
   _id?: string;
 }
 
+export interface CategoryDisplayI extends CategoryI {
+  children: Array<CategoryI>;
+}
+
 export class Category implements CategoryI {
   public name: string;
   public slug: string;
