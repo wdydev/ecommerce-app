@@ -25,8 +25,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AddressService} from './addresses/address.service';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
-import {CartCalc} from '../pipes/cart.calc';
 import {PipesModule} from '../pipes/pipes.module';
+import {GuardsModule} from '../guards/guards.module';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import {PipesModule} from '../pipes/pipes.module';
     CarouselModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    GuardsModule
   ],
   declarations: [
     HomeComponent,

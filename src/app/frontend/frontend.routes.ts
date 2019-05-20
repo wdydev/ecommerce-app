@@ -15,6 +15,7 @@ import {SearchComponent} from './search/search.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {FaqComponent} from './faq/faq.component';
+import {UserGuard} from '../guards/user.guard';
 
 
 export const routes: Routes = [
@@ -57,13 +58,12 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
+    canActivate: [UserGuard],
     component: CheckoutComponent
   },
   {
     path: 'login', component: LoginComponent
   },
-
-
   {
     path: 'category/:slug',
     component: CategoryComponent

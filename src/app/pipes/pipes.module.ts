@@ -13,5 +13,5 @@ import {StatusPipe} from './status.pipe';
   ]
 })
 export class PipesModule {
-  
+
 }
