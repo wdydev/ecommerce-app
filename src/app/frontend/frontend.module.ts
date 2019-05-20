@@ -53,6 +53,7 @@ import {ProductService} from './product/product.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+
   ],
   providers: [
     AddressService,
