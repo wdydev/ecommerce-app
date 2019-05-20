@@ -22,10 +22,9 @@ export class UsersService {
     const res = await this.api.get(`/users/${id}`).toPromise();
     return res.status === 200;
   }
+
   public async getUser(id: string) {
     const res = await this.api.get(`/users/${id}`).toPromise();
-     return res.status === 200;
+    return res.status === 200;
   }
-
-
 }

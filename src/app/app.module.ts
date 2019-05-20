@@ -10,10 +10,12 @@ import {ModalService} from './services/modal.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CategoryService as AdminCategoryService} from './admin/category/category.service';
+import {CartCalc} from './pipes/cart.calc';
+import {PipesModule} from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,13 +23,13 @@ import {CategoryService as AdminCategoryService} from './admin/category/category
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    PipesModule
   ],
   providers: [
     ModalService,
     AdminCategoryService
   ],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
