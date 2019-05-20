@@ -3,11 +3,13 @@ import {Address} from './address';
 import {Payment} from './payment';
 
 export interface UserI {
+  name: string;
+  mobile: string;
   fullName: string;
   email: string;
   password: string;
   phoneNumber: string;
-  addresses: Array<Address>;
+   addresses: Array<Address>;
   addAddress: (address: Address) => void;
   payments: Array<Payment>;
   addPayment: (payment: Payment) => void;
@@ -15,6 +17,8 @@ export interface UserI {
 }
 
 export class User implements UserI {
+  public name: string;
+  public mobile: string;
   public fullName: string;
   public email: string;
   public password: string;
@@ -32,7 +36,6 @@ export class User implements UserI {
     this.addresses = [];
     this._id = user._id;
   }
-
 
   public addAddress(address: Address) {
     this.addresses.push(address);
