@@ -51,6 +51,7 @@ import {AddressService} from './addresses/address.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+
   ],
   providers: [
     AddressService

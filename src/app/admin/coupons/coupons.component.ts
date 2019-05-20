@@ -3,6 +3,7 @@ import {ModalService} from '../../services/modal.service';
 import {Coupon, CouponI} from '../../entity/coupon';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CouponService} from './coupon.service';
+import {Address} from '../../entity/address';
 
 @Component({
   selector: 'app-admin-coupons',
@@ -19,6 +20,7 @@ export class CouponsComponent {
   }
 
   private viewCoupon(template: TemplateRef<any>): any {
+
     this.modal.open(template);
   }
 
@@ -61,6 +63,14 @@ export class CouponsComponent {
       this.coupons = this.coupons.filter(x => x._id !== coupon._id);
     }
 
+  }
+
+  public async loadCoupons() {
+    this.coupons = await this.service.getCoupons();
+  }
+
+  public ngOnInit(): void {
+    this.loadCoupons();
   }
 
 
