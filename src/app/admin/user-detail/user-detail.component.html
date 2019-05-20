@@ -25,45 +25,31 @@
         <div class="tab-pane active" id="tab-1">
 
           <div class="modal-body">
-            <div class="row">
-              <form [formGroup]="form">
-                <div class="form-group">
 
-                  <label class="col-md-4 control-label" for="code">Full Name</label>
-                  <div class="col-md-8">
-                    <input type="text" id="code" name="code" class="form-control" placeholder="Enter name"
-                           formControlName="code"/><br>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                </tr>
+                </thead>
 
-                  </div>
-                  <label class="col-md-4 control-label" for="discount-type">Email</label>
-                  <div class="col-md-8">
-                    <input type="text" id="discount-type" name="discount-type" class="form-control"
-                           placeholder="Enter Discount Type"
-                           formControlName="discountType"/><br>
-                  </div>
+                <tbody>
+                <tr  >
+                  <th scope="row">1</th>
+                  <td>{{user.email}}</td>
+                  <td>{{user.email}}</td>
+                  <td> {{user.phoneNumber}}</td>
 
-                  <label class="col-md-4 control-label" for="minimum-cost">Phone Number</label>
-                  <div class="col-md-8">
-                    <input type="text" id="minimum-cost" name="minimum-cost" class="form-control"
-                           placeholder="Enter Minimum Cost"
-                           formControlName="minimumCost"/><br>
-                  </div>
+                </tr>
 
-                  <label class="col-md-4 control-label" for="maximum-cost"> Member Since</label>
-                  <div class="col-md-8">
-                    <input type="text" id="maximum-cost" name="maximum-cost" class="form-control"
-                           placeholder="Enter Maximum Cost"
-                           formControlName="maximumCost"/><br>
-                  </div>
-                  <span class="col-md-4"></span>
-                  <div class="col-md-8">
-                    <button class="btn btn-info" onclick="">Save</button>
-                  </div>
-
-
-                </div>
-              </form>
+                </tbody>
+              </table>
             </div>
+
           </div>
 
 
@@ -71,63 +57,107 @@
         <div class="tab-pane" id="tab-2">
 
           <div class="modal-body">
-            <div class="row">
-              <form [formGroup]="form">
-                <div class="form-group">
 
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Card Type</th>
+                  <th>Card Number</th>
+                  <th>Expiration Date</th>
 
-                  <label class="col-md-4 control-label" for="start-dae">Card Number</label>
-                  <div class="col-md-8">
-                    <input type="text" id="start-dae" name="start-date" class="form-control"
-                           placeholder="Enter Start Date"
-                            formControlName="startDate"/><br>
-                  </div>
+                </tr>
+                </thead>
+                <tbody>
 
+                <tr >
+                  <th scope="row">1</th>
+                  <td>{{user.paymentMethod}}</td>
+                  <td>{{user.email}}</td>
+                  <td> {{user.email}}</td>
 
-                  <label class="col-md-4 control-label" for="start-dae">Card Type</label>
-                  <div class="col-md-8">
-                    <input type="text" id="card-Type" name="card-Type" class="form-control"
-                           placeholder="Enter Start Date"
-                           formControlName="startDate"/><br>
-                  </div>
+                </tr>
 
-
-                  <label class="col-md-4 control-label" for="end-dae">Card Number </label>
-                  <div class="col-md-8">
-                    <input type="text" id="end-dae" name="end-date" class="form-control" placeholder="Enter End Date"
-                           formControlName="endDate"/><br>
-                  </div>
-
-                  <label class="col-md-4 control-label" for="minimum-cost">Expiration Date</label>
-                  <div class="col-md-8">
-                    <input type="text" id="minimm-cost" name="minimum-cost" class="form-control"
-                           placeholder="Enter Minimum Cost"
-                           formControlName="minimumCost"/><br>
-                  </div>
-
-
-
-
-                </div>
-              </form>
+                </tbody>
+              </table>
             </div>
           </div>
+
         </div>
-        <div
-          class="tab-pane" id="tab-3">Consectetuer adipiscing elit.
-          Donec eros tellus, scelerisque
-          nec, rhoncus eget, sollicitudin
-          eu, vehicula venenatis, tempor
-          vitae, est. Praesent vitae
-          dui. Morbi id tellus. Lorem
-          ipsum dolor sit amet,
+
+        <div class="tab-pane" id="tab-3">
+
+          <div class="modal-body">
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Address 1</th>
+                  <th>Addess 2</th>
+                  <th>Address 3</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{user.fullName}}</td>
+                  <td>{{user.email}}</td>
+                  <td> {{user.email}}</td>
+
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
+
+        <div class="tab-pane" id="tab-4">
+
+          <div class="modal-body">
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{user.fullName}}</td>
+                  <td>{{user.email}}</td>
+                  <td> {{user.email}}</td>
+
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+
       </div>
+
       <!--Tabs Part End-->
     </div>
+
   </div>
 
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
-
