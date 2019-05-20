@@ -10,10 +10,12 @@ import {ModalService} from './services/modal.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CategoryService as AdminCategoryService} from './admin/category/category.service';
+import {CartCalc} from './pipes/cart.calc';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CartCalc
   ],
   imports: [
     BrowserModule,
