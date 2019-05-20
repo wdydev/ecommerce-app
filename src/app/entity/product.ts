@@ -33,6 +33,8 @@ export interface ProductI {
   images: Array<string>;
   basePrice: number;
   status: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export class Product implements ProductI {
@@ -49,6 +51,8 @@ export class Product implements ProductI {
   public images: Array<string>;
   public basePrice: number;
   public status: number;
+  public createdAt?: Date;
+  public updatedAt?: Date;
 
   constructor(product: ProductI) {
     this._id = product._id;
@@ -63,5 +67,7 @@ export class Product implements ProductI {
     this.images = product.images;
     this.basePrice = product.basePrice;
     this.status = product.status;
+    this.createdAt = product.createdAt || new Date();
+    this.updatedAt = new Date();
   }
 }

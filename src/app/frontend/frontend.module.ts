@@ -23,6 +23,7 @@ import {FaqComponent} from './faq/faq.component';
 import {AccountSidebarComponent} from './account-sidebar/account-sidebar.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AddressService} from './addresses/address.service';
+import {HomeService} from './home/home.service';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {AddressService} from './addresses/address.service';
     AccountSidebarComponent,
   ],
   providers: [
-    AddressService
+    AddressService,
+    HomeService
   ],
 })
 export class FrontendModule {
