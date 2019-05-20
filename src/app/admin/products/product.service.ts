@@ -12,6 +12,11 @@ export interface GetProductsResponse {
   products: Array<ProductI>;
 }
 
+export interface GetProductResponse {
+  status: number;
+  product: ProductI;
+}
+
 @Injectable()
 export class ProductService {
   constructor(private api: ApiService) {
