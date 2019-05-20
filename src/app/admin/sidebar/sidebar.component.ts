@@ -25,7 +25,7 @@ export class SidebarComponent {
       coupons: ['', 'admin', 'coupons'],
       shipping: ['', 'admin', 'shipping'],
       logout: ['', 'admin', 'logout'],
-      users: ['', 'admin', 'users'],
+      users: ['', 'admin', 'users']
     };
   }
 
