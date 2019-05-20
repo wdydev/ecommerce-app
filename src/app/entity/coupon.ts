@@ -17,7 +17,7 @@ export class Coupon implements CouponI {
   public endDate: Date;
   public minimumCost: number;
   public maximumCost: number;
-  public status : string;
+  public status: string;
   // tslint:disable-next-line:variable-name
   public _id?: string;
 
