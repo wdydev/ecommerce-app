@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   public async updateUser(id: string) {
-    const res = await this.api.delete(`/users/${id}`).toPromise();
+    const res = await this.api.get(`/users/${id}`).toPromise();
     return res.status === 200;
   }
   public async getUser(id: string) {
