@@ -11,25 +11,25 @@
       <div class="block-title">
         <button class="btn btn-success" (click)="categoryForm(categoryFormTemplate)">Add Category</button>
       </div>
-      <div class="block-content">
-        <table class="table-responsive">
+      <div class="block-content table-responsive">
+        <table class="table table-hover">
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Status</th>
-            <th><i class="fa fa-bolt"></i></th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Status</th>
+            <th class="text-left"><i class="fa fa-bolt"></i></th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let cat of categories;">
             <td>{{cat.name}}</td>
-            <td>{{cat.status}}</td>
+            <td>{{cat.status|status}}</td>
             <td>
               <button class="btn btn-info btn-xs" (click)="categoryForm(categoryFormTemplate,cat)">
-                <i class="fa f-pencil"></i>
+                <i class="fa fa-pencil"></i>
               </button>
               <button class="btn btn-danger btn-xs" (click)="deleteDialog(deleteDialogTemplate,cat)">
-                <i class="fa f-trash"></i>
+                <i class="fa fa-trash"></i>
               </button>
             </td>
           </tr>

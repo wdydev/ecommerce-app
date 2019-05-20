@@ -9,6 +9,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {ModalService} from './services/modal.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {CategoryService as AdminCategoryService} from './admin/category/category.service';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,10 @@ import {HttpClientModule} from '@angular/common/http';
     ModalModule.forRoot()
   ],
   providers: [
-    ModalService
+    ModalService,
+    AdminCategoryService
   ],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
