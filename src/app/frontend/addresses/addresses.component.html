@@ -80,7 +80,7 @@
           <label class="col-md-4 control-label" for="address">Address</label>
           <div class="col-md-8">
             <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address"
-                   [formControlName]="'address'"/>
+                   [formControlName]="'address'" required/>
           </div>
         </div>
 
@@ -96,7 +96,7 @@
           <label class="col-md-4 control-label" for="city">City</label>
           <div class="col-md-8">
             <input type="text" id="city" name="city" class="form-control" placeholder="Enter City"
-                   [formControlName]="'city'"/>
+                   [formControlName]="'city'" required/>
           </div>
         </div>
 
@@ -105,7 +105,7 @@
           <label class="col-md-4 control-label" for="state">State</label>
           <div class="col-md-8">
             <input type="text" id="state" name="state" class="form-control" placeholder="Enter State"
-                   [formControlName]="'state'"/>
+                   [formControlName]="'state'" required/>
           </div>
         </div>
 
@@ -114,7 +114,7 @@
           <label class="col-md-4 control-label" for="zipcode">Zip Code</label>
           <div class="col-md-8">
             <input type="text" id="zipcode" name="zipcode" class="form-control" placeholder="Enter ZipCode"
-                   [formControlName]="'zipcode'"/>
+                   [formControlName]="'zipcode'" required/>
           </div>
         </div>
 
@@ -123,10 +123,13 @@
           <label class="col-md-4 control-label" for="country">Country</label>
           <div class="col-md-8">
             <input type="text" id="country" name="country" class="form-control" placeholder="Enter Country"
-                   [formControlName]="'country'"/>
+                   [formControlName]="'country'" required/>
           </div>
         </div>
 
+
+
+        <input type="submit" value="submit" >
 
         <div class="form-group"></div>
       </form>
