@@ -84,6 +84,7 @@ export class ProductComponent implements OnInit {
   }
 
   public addToCart(): void {
+    this.cartItem.quantity = this.form.value.quantity || 1;
     this.service.addToCart(this.cartItem);
   }
 
