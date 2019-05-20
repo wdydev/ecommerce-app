@@ -1,24 +1,196 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a href="#">Admin</a></li>
+  <li><a href="#">Categories</a></li>
 </ul>
 
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Products</h2>
-    <div class="row">
-      <button (click)="addProduct(addProductTemplate)">Add a product</button>
+    <div class="block full">
+      <div class="block-title">
+        <button class="btn btn-success" (click)="productForm(productFormTemplate)">Add Product</button>
+      </div>
+      <div class="block-content table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th class="text-left">Name</th>
+            <th class="text-left">Category</th>
+            <th class="text-left">Base price</th>
+            <th class="text-left">Status</th>
+            <th class="text-left"><i class="fa fa-bolt"></i></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of products;">
+            <td>{{product.name}}</td>
+            <td>{{product.category.name}}</td>
+            <td>${{product.basePrice | number:'1.2-2'}}</td>
+            <td>{{product.status|status}}</td>
+            <td>
+              <button class="btn btn-info btn-xs" (click)="productForm(productFormTemplate,product)">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn btn-danger btn-xs" (click)="deleteDialog(deleteDialogTemplate,product)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
-<ng-template #addProductTemplate>
-  <div class="modal-header">
-    <h3>Add a product</h3>
+
+<ng-template #productFormTemplate>
+  <div class="modal-header mfp-close-btn-in">
+    <h2 class="modal-title title">Add a product</h2>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
   </div>
-  <div class="modal-body"></div>
-  <div class="modal-footer"></div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="form">
+          <tabset>
+            <tab heading="Basic Configuration">
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="name">Name</label>
+                  <div class="col-md-8">
+                    <input id="name" class="form-control" formControlName="name" placeholder="Enter name"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4" for="category">Category</label>
+                  <div class="col-md-8">
+                    <select id="category" class="form-control" formControlName="category"
+                            (change)="getChildCategories()">
+                      <option value="">--none--</option>
+                      <option [ngValue]="cat" *ngFor="let cat of categories">
+                        {{cat.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-12" *ngIf="childCategories && childCategories.length > 0">
+                  <label class="col-md-4" for="subCategories">Sub Categories</label>
+                  <div class="col-md-8">
+                    <select id="subCategories" name="subCategories" class="form-control" formControlName="subCategories"
+                            multiple="multiple" (change)="createAttributes()">
+                      <option value="">--none--</option>
+                      <option [ngValue]="cat" *ngFor="let cat of childCategories">
+                        {{cat.name}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="basePrice">Base Price</label>
+                  <div class="col-md-8">
+                    <input id="basePrice" class="form-control" formControlName="basePrice" placeholder="Enter price"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="basePrice">SKU</label>
+                  <div class="col-md-8">
+                    <input id="sku" class="form-control" formControlName="sku" placeholder="Enter sku"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="name">Description</label>
+                  <div class="col-md-8">
+                  <textarea id="description" class="form-control" formControlName="description"
+                            placeholder="Enter description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label">Images</label>
+                  <div class="col-md-8">
+                    <aws-upload [multiple]="true" folder="products" (onupload)="fileUploaded($event)"></aws-upload>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label">Status</label>
+                  <div class="col-md-8">
+                    <select name="status" class="form-control" id="status" formControlName="status">
+                      <option value="" disabled>--select status--</option>
+                      <option [ngValue]="1">Enabled</option>
+                      <option [ngValue]="0">Disabled</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Attributes">
+              <div class="row">
+                <div class="col-md-12">
+                  <ng-container formArrayName="attributes" *ngIf="form.controls.attributes.controls.length > 0">
+                    <ng-container *ngFor="let attr of form.controls.attributes.controls;let i = index;">
+                      <ng-container [formGroupName]="i.toString()">
+                        <div class="form-group col-md-12">
+                          <label class="col-md-4 control-label">Attribute</label>
+                          <div class="col-md-8">
+                            {{attr.controls.name.value}}
+                            <button class="btn btn-success btn-xs pull-right" (click)="addOption(i)"
+                                    [tooltip]="'Add an option'">
+                              <i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <ng-container formArrayName="options"
+                                      *ngIf="attr.controls.options && attr.controls.options.controls && attr.controls.options.controls.length > 0">
+                          <ng-container *ngFor="let option of attr.controls.options.controls;let j = index;">
+                            <div class="form-group col-md-12" [formGroupName]="j.toString()">
+                              <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter option name"
+                                       formControlName="name"/>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Enter option price"
+                                         formControlName="price"/>
+                                  <span class="input-group-addon">
+                                  <button class="btn btn-xs btn-danger" (click)="removeOption(i,j)">
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+                                </span>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Inventory">
+            </tab>
+          </tabset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="saveProduct()">save</button>
+    <button class="btn btn-danger" (click)="cancel()">cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteDialogTemplate>
+  <div class="modal-header">
+    <h3 class="title">Delete confirmation</h3>
+  </div>
+  <div class="modal-body">
+    <h3>Are you sure you want to delete this product?</h3>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="confirmDelete()">Yes</button>
+    <button class="btn btn-danger" (click)="cancel()">No</button>
+  </div>
 </ng-template>
