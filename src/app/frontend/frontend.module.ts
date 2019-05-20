@@ -32,7 +32,6 @@ import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +64,7 @@ import {LoginService} from './login/login.service';
   providers: [
     AddressService,
     RegisterService,
-    MyAccountServices
+    MyAccountServices,
     HomeService,
     ProductService,
     LoginService
