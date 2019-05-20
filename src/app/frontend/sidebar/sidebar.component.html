@@ -21,7 +21,7 @@
             <div class="product-layout item-inner style1 ">
               <div class="item-image">
                 <div class="item-img-info">
-                  <a href="#" target="_self" title="Mandouille short ">
+                  <a [routerLink]="['product',prod.slug]" target="_self" [title]="prod.name">
                     <img [src]="prod.images? prod.images[0]:'image/catalog/demo/product/80/1.jpg'" [alt]="prod.name">
                   </a>
                 </div>
