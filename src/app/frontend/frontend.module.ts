@@ -27,7 +27,9 @@ import {RegisterService} from './register/register.service';
 import {MyAccountServices} from './my-account/my-account.services';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
-
+import {PipesModule} from '../pipes/pipes.module';
+import {GuardsModule} from '../guards/guards.module';
+import {LoginService} from './login/login.service';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {ProductService} from './product/product.service';
     CommonModule,
     CarouselModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule,
+    GuardsModule
   ],
   declarations: [
     HomeComponent,
@@ -56,14 +60,14 @@ import {ProductService} from './product/product.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-
   ],
   providers: [
     AddressService,
     RegisterService,
-    MyAccountServices
+    MyAccountServices,
     HomeService,
-    ProductService
+    ProductService,
+    LoginService
   ],
 })
 export class FrontendModule {
