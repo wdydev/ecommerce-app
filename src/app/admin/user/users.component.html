@@ -7,10 +7,42 @@
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Users</h2>
-    <div class="row">
+
+    <form [formGroup]="form">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Payment Method</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Assad Saad</td>
+            <td>abc@abc.com</td>
+            <td>Credit Card</td>
+            <td>Fairfield IA, USA</td>
+            <td>
+            <a [routerLink]="['','admin','users','profile']" class="btn btn-success">
+              <i class="fa fa-eye"></i>
+            </a>
+            </td>
+          </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </form>
     </div>
-  </div>
+
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
+

@@ -1,6 +1,5 @@
 import {Component, TemplateRef} from '@angular/core';
 import {ModalService} from '../../services/modal.service';
-import {Category} from '../../entity/category';
 import {Coupon, CouponI} from '../../entity/coupon';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CouponService} from './coupon.service';
