@@ -45,6 +45,7 @@ import {OrderDetailService} from './order-detail/order-detail.service';
     UsersComponent,
     UserDetailComponent,
     OrderDetailComponent,
+
   ],
   providers: [
     CategoryService,

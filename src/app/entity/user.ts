@@ -20,7 +20,6 @@ export class User implements UserI {
   public password?: string;
   public payments?: Array<Payment>;
   public addresses?: Array<Address>;
-  // tslint:disable-next-line:variable-name
   public _id?: string;
 
   constructor(user: User) {
