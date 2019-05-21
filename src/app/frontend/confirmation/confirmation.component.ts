@@ -1,14 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CartItem} from '../../entity/cart.item';
-import {CartService} from '../../services/cart.service';
 import {UserI} from '../../entity/user';
 import {UserService} from '../../services/user.service';
-import {FormControl, FormGroup} from '@angular/forms';
 import {Order} from '../../entity/order';
-import {CartCalc} from '../../pipes/cart.calc';
-//
-import {Router} from '@angular/router';
-import {CheckoutService} from '../checkout/checkout.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-confirmation',
@@ -16,16 +10,17 @@ import {CheckoutService} from '../checkout/checkout.service';
 })
 export class ConfirmationComponent implements OnInit {
 
-  private user: UserI;
-  private order: Order;
+  public user: UserI;
+  public id: string;
+
   constructor(
-              private userService: UserService,
-              ) {
-    
-    
+    private userService: UserService,
+    private router: ActivatedRoute
+  ) {
 
     this.user = userService.user;
     userService.user$.subscribe(user => this.user = user);
+    this.router.params.subscribe(params => this.id = params.id);
 
 
   }

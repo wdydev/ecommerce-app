@@ -10,8 +10,8 @@ import {CartService} from '../../services/cart.service';
 })
 
 export class LoginComponent implements OnInit {
-  private form: FormGroup;
-  private message: string;
+  public form: FormGroup;
+  public message: string;
 
   constructor(private service: LoginService, private router: Router, private cart: CartService) {
 

@@ -7,7 +7,7 @@ import {CartItem} from '../../entity/cart.item';
   templateUrl: './cart.component.html'
 })
 export class CartComponent implements OnInit {
-  private cart: Array<CartItem>;
+  public cart: Array<CartItem>;
 
   constructor(private service: CartService) {
     this.cart = this.service.getItems();

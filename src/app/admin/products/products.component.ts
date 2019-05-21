@@ -12,11 +12,11 @@ import {ObjectID} from '../../entity/mongo.id';
   templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
-  private product: ProductI;
-  private form: FormGroup;
-  private products: Array<ProductI>;
-  private categories: Array<CategoryI>;
-  private childCategories: Array<CategoryI>;
+  public product: ProductI;
+  public form: FormGroup;
+  public products: Array<ProductI>;
+  public categories: Array<CategoryI>;
+  public childCategories: Array<CategoryI>;
 
   constructor(private modal: ModalService, private service: ProductService, private categoryService: CategoryService) {
     this.products = [];

@@ -10,8 +10,8 @@ import {User} from '../../entity/user';
   templateUrl: './orders.component.html'
 })
 export class OrdersComponent implements OnInit {
-  private order: Order;
-  private orders: Array<Order>;
+  public order: Order;
+  public orders: Array<Order>;
 
   constructor(private modal: ModalService, private service: OrdersService) {
 

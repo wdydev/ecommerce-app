@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
   templateUrl: './sidebar.html'
 })
 export class SidebarComponent {
-  private links: {
+  public links: {
     dashboard: Array<string>
     categories: Array<string>
     products: Array<string>

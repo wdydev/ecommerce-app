@@ -12,8 +12,8 @@ import {Router} from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
-  private user: User;
-  private form: FormGroup;
+  public user: User;
+  public form: FormGroup;
 
   constructor(private  modal: ModalService, private service: RegisterService, private router: Router) {
     this.user = null;

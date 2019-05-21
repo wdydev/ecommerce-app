@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
-  <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="my-account">Account</a></li>
+  <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+  <li><a [routerLink]="['','my-account']">Account</a></li>
   <li><a>Personal Information</a></li>
 </ul>
 
@@ -18,18 +18,18 @@
             <legend>Personal Details</legend>
             <div class="form-group required">
               <label   class="control-label">Full Name</label>
-              <input type="text" class="form-control" id="input-firstname" placeholder="Full Name" value="" name="name"
+              <input type="text" class="form-control" id="input-firstname" placeholder="Full Name" name="name"
                      formControlName="name">
             </div>
 
             <div class="form-group required">
               <label  class="control-label">E-Mail</label>
-              <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email"
+              <input type="email" class="form-control" id="input-email" placeholder="E-Mail" name="email"
                      readonly formControlName="email">
             </div>
             <div class="form-group required">
               <label for="input-telephone" class="control-label">Telephone</label>
-              <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="mobile"
+              <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" name="mobile"
                      formControlName="mobile" required>
             </div>
 
@@ -55,12 +55,12 @@
             </div>
             <div class="form-group required">
               <label  class="control-label">New Password</label>
-              <input type="password"  class="form-control" placeholder="New Password" value="" name="new-password" >
+              <input type="password"  class="form-control" placeholder="New Password" value="" name="new-password" formControlName="newPassword">
             </div>
             <div class="form-group required">
               <label for="input-confirm" class="control-label">New Password Confirm</label>
               <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value=""
-                     name="new-confirm" formControlName="newPassword">
+                     name="new-confirm" formControlName="confirmPassword">
             </div>
           </fieldset>
 

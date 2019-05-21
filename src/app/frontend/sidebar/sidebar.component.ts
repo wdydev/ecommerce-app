@@ -11,7 +11,7 @@ import {UserI} from '../../entity/user';
 
 export class SidebarComponent implements OnInit {
   @Input() latest: Array<ProductI>;
-  private user: UserI;
+  public user: UserI;
 
   constructor(private userService: UserService) {
     this.latest = [];

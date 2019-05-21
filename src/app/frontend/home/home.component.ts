@@ -38,9 +38,9 @@ import {UserService} from '../../services/user.service';
 })
 
 export class HomeComponent implements OnInit {
-  private bannerSlider: any;
-  private latest: Array<ProductI>;
-  private recommended: Array<ProductI>;
+  public bannerSlider: any;
+  public latest: Array<ProductI>;
+  public recommended: Array<ProductI>;
 
   constructor(private title: Title, private service: HomeService) {
     this.bannerSlider = {
