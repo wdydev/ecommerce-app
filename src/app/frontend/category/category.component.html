@@ -1,8 +1,9 @@
 <!-- Main Container  -->
 <div class="main-container container">
   <ul class="breadcrumb">
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-    <li><a href="#">Smartphone & Tablets</a></li>
+    <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+
+    <li><a [routerLink]="['', 'category', slug]">{{slug}}</a></li>
   </ul>
 
   <div class="row">
