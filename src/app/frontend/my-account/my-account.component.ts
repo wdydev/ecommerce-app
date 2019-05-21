@@ -14,10 +14,10 @@ import {UserService} from '../../services/user.service';
 })
 
 export class MyAccountComponent implements OnInit {
-  private userForm: FormGroup;
-  private passwordForm: FormGroup;
+  public userForm: FormGroup;
+  public passwordForm: FormGroup;
 
-  private user: UserI;
+  public user: UserI;
 
   constructor(
     private  modal: ModalService,
@@ -26,10 +26,6 @@ export class MyAccountComponent implements OnInit {
     private userService: UserService) {
 
     this.user = userService.user;
-  }
-
-  public async getUser() {
-    this.user = await this.service.getUser(this.user._id);
     this.userForm = new FormGroup({
       name: new FormControl(this.user.name),
       email: new FormControl(this.user.email),
@@ -37,9 +33,15 @@ export class MyAccountComponent implements OnInit {
     });
 
     this.passwordForm = new FormGroup({
-      oldPassword: new FormControl(),
+      oldPassword: new FormControl('', Validators.required),
       newPassword: new FormControl('', Validators.required),
+      confirmPassword: new FormControl('', Validators.required),
     });
+  }
+
+  public async getUser() {
+    this.user = await this.service.getUser(this.user._id);
+    this.userForm.patchValue(this.user);
   }
 
   public async updateUser() {
@@ -51,7 +53,24 @@ export class MyAccountComponent implements OnInit {
   }
 
   public async changePassword() {
-    const user = await this.service.changePassword(this.user._id, this.passwordForm.value);
+    try {
+      if (this.passwordForm.invalid) {
+        throw new Error('Please fill in correct data.');
+      }
+
+      const data = this.passwordForm.value;
+      if (!data) {
+        throw new Error('Data is empty.');
+      }
+
+      if (data.newPassword !== data.confirmPassword) {
+        throw new Error('Passwords do not match.');
+      }
+
+      const user = await this.service.changePassword(this.user._id, data);
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
   public ngOnInit(): void {

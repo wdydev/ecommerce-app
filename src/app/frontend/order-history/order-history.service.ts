@@ -6,8 +6,8 @@ import {UserI} from '../../entity/user';
 @Injectable()
 export class OrderHistoryService {
 
-  private order: Order;
-  private user: UserI;
+  public order: Order;
+  public user: UserI;
 
   constructor(private api: ApiService) {
     const user = localStorage.getItem('user');

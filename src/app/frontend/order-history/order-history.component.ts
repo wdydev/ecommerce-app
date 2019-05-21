@@ -6,14 +6,14 @@ import {OrderHistoryService} from './order-history.service';
 
 @Component({
   selector: 'app-orderhistory',
-  templateUrl: './oreder-history.component.html'
+  templateUrl: './order-history.component.html'
 })
 
 export class OrderHistoryComponent implements OnInit {
 
-  private address: Order;
-  private ordersForm: FormGroup;
-  private orders: Array<Order>;
+  public address: Order;
+  public ordersForm: FormGroup;
+  public orders: Array<Order>;
 
   constructor(private  modal: ModalService, private service: OrderHistoryService) {
     this.orders = [];

@@ -10,9 +10,9 @@ import {CouponService} from './coupon.service';
 })
 export class CouponsComponent {
 
-  private coupon: CouponI;
-  private form: FormGroup;
-  private coupons: Array<CouponI>;
+  public coupon: CouponI;
+  public form: FormGroup;
+  public coupons: Array<CouponI>;
 
 
   constructor(private modal: ModalService, private service: CouponService) {

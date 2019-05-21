@@ -9,9 +9,9 @@ import {FormControl, FormGroup} from '@angular/forms';
   templateUrl: './users.component.html'
 })
 export class UsersComponent {
-  private form: FormGroup;
-  private user: UserI;
-  private users: Array<UserI>;
+  public form: FormGroup;
+  public user: UserI;
+  public users: Array<UserI>;
 
   constructor(private modal: ModalService, private service: UsersService) {
     this.users = [];

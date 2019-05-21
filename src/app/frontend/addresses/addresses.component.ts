@@ -10,9 +10,9 @@ import {Address} from '../../entity/address';
 })
 
 export class AddressesComponent implements OnInit {
-  private address: Address;
-  private form: FormGroup;
-  private addresses: Array<Address>;
+  public address: Address;
+  public form: FormGroup;
+  public addresses: Array<Address>;
 
   constructor(private  modal: ModalService, private service: AddressService) {
     this.addresses = [];

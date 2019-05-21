@@ -37,7 +37,7 @@ import {ProductI} from '../../entity/product';
   ]
 })
 export class CategoryComponent {
-  private slug: string;
+  public slug: string;
   public products: Array<ProductI>;
 
   constructor(private modal: ModalService, private route: ActivatedRoute, private service: CategoryService) {

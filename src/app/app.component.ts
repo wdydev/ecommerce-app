@@ -15,10 +15,10 @@ import {UserI} from './entity/user';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  private title: string;
-  private categories: Array<CategoryDisplayI>;
-  private cart: Array<CartItem>;
-  private user: UserI;
+  public title: string;
+  public categories: Array<CategoryDisplayI>;
+  public cart: Array<CartItem>;
+  public user: UserI;
 
   constructor(private router: Router,
               private renderer: Renderer2,
