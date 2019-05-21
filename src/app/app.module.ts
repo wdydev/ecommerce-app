@@ -24,7 +24,7 @@ import {RequestInterceptor} from './services/request.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, onSameUrlNavigation: 'reload'}),
     ModalModule.forRoot(),
     PipesModule
   ],

@@ -21,6 +21,10 @@ export class UserService extends Subject<UserI> {
     this.userToken = this.readFromStorage('token');
     this.userType = this.readFromStorage('userType');
     this.readUser();
+
+    this.user$.next(this.currentUser);
+    this.token$.next(this.userToken);
+    this.type$.next(this.userType);
   }
 
   private readFromStorage(key: string) {
@@ -68,5 +72,14 @@ export class UserService extends Subject<UserI> {
     this.userToken = token;
     this.saveToStorage('token', token);
     this.token$.next(token);
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('token');
+    this.token$.next(null);
+    this.type$.next(null);
+    this.user$.next(null);
   }
 }

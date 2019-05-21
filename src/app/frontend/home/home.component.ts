@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HomeService} from './home.service';
 import {ProductI} from '../../entity/product';
+import {UserI} from '../../entity/user';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-frontend',
