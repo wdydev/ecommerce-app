@@ -1,7 +1,8 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a  [routerLink]="['', 'admin']">Admin</a></li>
+  <li><a  [routerLink]="['', 'admin','orders']">Orders</a></li>
+  <li><a  [routerLink]="['', 'admin', 'orders',id]">Order Detail</a></li>
 </ul>
 
 
@@ -39,7 +40,7 @@
         <td class="text-left">Brand: {{order.payment.card.brand}}
           <br>Last Four Digit: {{order.payment.card.last4}}
           <br>Expiration Date: {{order.payment.card.exp_month}}, {{order.payment.card.exp_year}}
-          <br>Funding Type: {{order.payment.card.funding}}
+          <br>Card Type: {{order.payment.card.funding}}
           <br>Country : {{order.payment.card.country}}
           </td>
         <td class="text-left">{{order.user.name}}

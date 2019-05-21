@@ -14,9 +14,11 @@ export class CouponsComponent {
   private form: FormGroup;
   private coupons: Array<CouponI>;
 
+
   constructor(private modal: ModalService, private service: CouponService) {
     this.coupons = [];
   }
+
 
   private viewCoupon(template: TemplateRef<any>): any {
 

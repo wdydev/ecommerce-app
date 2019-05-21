@@ -14,9 +14,19 @@ export class PayementMethodsComponent implements OnInit {
   private payment: Payment;
   private form: FormGroup;
   private payments: Array<Payment>;
+  private addACard: boolean;
 
   constructor(private  modal: ModalService, private  service: PaymentsService) {
     this.payments = [];
+    this.addACard = false;
+  }
+
+  public addCard() {
+    this.addACard = true;
+  }
+
+  public cardAdded() {
+    this.addACard = false;
   }
 
   public async paymentMethodForm(template: TemplateRef<any>, payment: any = {}) {

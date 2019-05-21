@@ -9,7 +9,7 @@ import {ProductI} from '../../entity/product';
   selector: 'app-category',
   templateUrl: './category.component.html',
   styles: [
-    `
+      `
       .item .inner {
         display: block;
         width: inherit;

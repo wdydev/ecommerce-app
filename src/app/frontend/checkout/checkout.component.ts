@@ -19,6 +19,7 @@ export class CheckoutComponent implements OnInit {
   private addACard: boolean;
   private checkoutForm: FormGroup;
   private order: Order;
+  private couponDiscount:number;
 
   constructor(private service: CartService,
               private userService: UserService,
@@ -36,6 +37,10 @@ export class CheckoutComponent implements OnInit {
       address: new FormControl(),
       card: new FormControl()
     });
+  }
+  public checkCoupon(coupon){
+
+    (coupon==="AssadSaad")?this.couponDiscount === 10:this.couponDiscount === 0;
   }
 
   public addCard() {
@@ -71,7 +76,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     this.service.removeAll();
-    this.router.navigate(['my-account']);
+    this.router.navigate(['confirmation']);
   }
 
   public ngOnInit(): void {
