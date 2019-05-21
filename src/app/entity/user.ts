@@ -17,15 +17,9 @@ export class User implements UserI {
   public name: string;
   public mobile: string;
   public email: string;
-<<<<<<< HEAD
   public password: string;
   public payments: Array<Payment>;
-  public addresses: Array<Address>;
-=======
-  public password?: string;
-  public payments?: Array<Payment>;
   public addresses?: Array<Address>;
->>>>>>> 16c07071ee57b6a312a8cc039070f06678113f2d
   // tslint:disable-next-line:variable-name
   public _id?: string;
 
