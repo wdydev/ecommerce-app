@@ -14,7 +14,11 @@ export class AddCardService {
     }
 
     const user = this.service.user;
-    user.payments.push(res.card);
+    if (!user.payments) {
+      user.payments = [];
+    }
+    user.addPayment(res.card);
+
     this.service.user = user;
 
     return true;

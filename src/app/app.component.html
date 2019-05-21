@@ -100,10 +100,15 @@
         <div class="middle-right col-lg-4 col-md-3 col-sm-6 col-xs-8">
           <div class="signin-w  hidden-sm hidden-xs">
             <ul class="signin-link blank">
-              <li class="log login">
+              <li class="log login" *ngIf="!user || !user._id">
                 <i class="fa fa-lock" style="margin-right: 10px;"></i>
                 <a class="link-lg" [routerLink]="['login']">Login </a> or
                 <a [routerLink]="['register']">Register</a>
+              </li>
+              <li class="log login" *ngIf="user && user._id">
+                <i class="fa fa-user" style="margin-right: 10px;"></i>
+                <a class="link-lg" [routerLink]="['my-account']">{{user.name}} </a> or
+                <a (click)="logout()">Logout</a>
               </li>
             </ul>
           </div>
@@ -338,144 +343,6 @@
 
 <!-- Footer Container -->
 <footer class="footer-container typefooter-1">
-  <!-- Footer Top Container -->
-  <section class="footer-top">
-    <div class="container ftop">
-      <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 ">
-
-          <div class="module newsletter-footer1">
-            <div class="newsletter" style="width:100%   ; background-color: #fff ; ">
-
-              <div class="title-block">
-                <div class="page-heading font-title">
-                  Signup for Newsletter
-                </div>
-                <div class="promotext">We’ll never share your email address with a third-party.</div>
-              </div>
-
-              <div class="block_content">
-                <!--                <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">-->
-                <!--                  <div class="form-group">-->
-                <!--                    <div class="input-box">-->
-                <!--                      <input type="email" placeholder="Your email address..." value="" class="form-control"-->
-                <!--                             id="txtemail" name="txtemail" size="55">-->
-                <!--                    </div>-->
-                <!--                    <div class="subcribe">-->
-                <!--                      <button class="btn btn-primary btn-default font-title" type="submit"-->
-                <!--                              onclick="return subscribe_newsletter();" name="submit">-->
-                <!--                        Subscribe-->
-                <!--                      </button>-->
-                <!--                    </div>-->
-                <!--                  </div>-->
-                <!--                </form>-->
-
-
-              </div>
-              <!--/.modcontent-->
-
-            </div>
-
-          </div>
-
-
-        </div>
-        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-          <ul class="socials">
-            <li class="facebook"><a class="_blank" href="https://www.facebook.com/MagenTech" target="_blank"><i
-              class="fa fa-facebook"></i><span>Facebook</span></a></li>
-            <li class="twitter"><a class="_blank" href="https://twitter.com/smartaddons" target="_blank"><i
-              class="fa fa-twitter"></i><span>Twitter</span></a></li>
-            <li class="google_plus"><a class="_blank" href="https://plus.google.com/u/0/+Smartaddons/posts"
-                                       target="_blank"><i class="fa fa-google-plus"></i><span>Google Plus</span></a>
-            </li>
-            <li class="pinterest"><a class="_blank" href="https://www.pinterest.com/smartaddons/" target="_blank"><i
-              class="fa fa-pinterest"></i><span>Pinterest</span></a></li>
-          </ul>
-
-
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /Footer Top Container -->
-
-  <div class="footer-middle col-md-offset-2  ">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-style">
-          <div class="infos-footer">
-            <a href="#"><img src="image/catalog/logo-footer.png" alt="image"></a>
-            <ul class="menu">
-              <li class="adres">
-                1000N, 4th Street, Fairfield, 52557, IA, USA
-              </li>
-              <li class="phone">
-                (+1) 000 0000 0000
-              </li>
-              <li class="mail">
-                <a href="mailto:contact@opencartworks.com">contact@contact.com</a>
-              </li>
-
-            </ul>
-          </div>
-
-
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 col-style">
-          <div class="box-information box-footer">
-            <div class="module clearfix">
-              <h3 class="modtitle">Information</h3>
-              <div class="modcontent">
-                <ul class="menu">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Warranty And Services</a></li>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 col-style">
-          <div class="box-account box-footer">
-            <div class="module clearfix">
-              <h3 class="modtitle">My Account</h3>
-              <div class="modcontent">
-                <ul class="menu">
-                  <li><a href="#">Brands</a></li>
-                  <li><a href="#">FAQs</a></li>
-                  <li><a href="#">Custom Link</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 col-style">
-          <div class="box-service box-footer">
-            <div class="module clearfix">
-              <h3 class="modtitle">Services</h3>
-              <div class="modcontent">
-                <ul class="menu">
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Site Map</a></li>
-                  <li><a href="#">Customer Service</a></li>
-                  <li><a href="#">Custom Link</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-
   <!-- Footer Bottom Container -->
   <div class="footer-bottom ">
     <div class="container">
