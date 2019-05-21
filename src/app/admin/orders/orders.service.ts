@@ -19,8 +19,8 @@ export class OrdersService {
     return res.status === 200;
   }
 
-  public async updateOrder(id: string) {
-    const res = await this.api.get(`/orders/${id}`).toPromise();
+  public async updateOrder(order: any) {
+    const res = await this.api.patch(`/orders/${order._id}`, {status: order.status}).toPromise();
     return res.status === 200;
   }
 
