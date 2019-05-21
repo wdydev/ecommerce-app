@@ -35,6 +35,12 @@ export class CartService extends Subject<Array<CartItem>> {
     this.updateStorage();
   }
 
+  public removeAll() {
+    localStorage.removeItem('cart');
+    this.items = [];
+    this.next(this.items);
+  }
+
   public update(item: CartItem) {
     this.items = this.items.map(i => {
       if (i._id === item._id) {

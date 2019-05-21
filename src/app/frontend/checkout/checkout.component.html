@@ -9,155 +9,162 @@
 
   <div class="row">
     <!--Middle Part Start-->
-    <div id="content" class="col-sm-12">
-      <div class="so-onepagecheckout row">
-        <div class="col-right col-sm-8 col-md-offset-2">
-          <div class="row">
-            <div class="col-sm-12">
-              <h2 class="title">Checkout</h2>
-              <div class="panel panel-default no-padding">
-                <div class="col-sm-6 checkout-shipping-methods">
-                  <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fa fa-truck"></i> Delivery Address</h4>
-                  </div>
-                  <div class="panel-body ">
-                    <p>Please select the preferred shipping method to use on this order.</p>
-                    <div class="radio" *ngFor="let addr of user.addresses">
-                      <label>
-                        <input type="radio" checked="checked" name="address">
-                        {{addr.address}} {{addr.address2}}, <br>
-                        {{addr.zipcode}}, {{addr.city}}, {{addr.city}}
-                      </label>
+    <form [formGroup]="checkoutForm">
+      <div id="content" class="col-sm-12">
+        <div class="so-onepagecheckout row">
+          <div class="col-right col-sm-8 col-md-offset-2">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="title">Checkout</h2>
+                <div class="panel panel-default no-padding">
+                  <div class="col-sm-6 checkout-shipping-methods">
+                    <div class="panel-heading">
+                      <h4 class="panel-title"><i class="fa fa-truck"></i> Delivery Address</h4>
+                    </div>
+                    <div class="panel-body ">
+                      <p>Please select the preferred shipping method to use on this order.</p>
+                      <div class="radio" *ngFor="let addr of user.addresses">
+                        <label>
+                          <input type="radio" checked="checked" name="address" [value]="addr" formControlName="address">
+                          {{addr.address}} {{addr.address2}}, <br>
+                          {{addr.zipcode}}, {{addr.city}}, {{addr.city}}
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-6  checkout-payment-methods">
-                  <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fa fa-credit-card"></i> Payment Method</h4>
-                  </div>
-                  <div class="panel-body">
-                    <p>Please select the preferred payment method to use on this order.</p>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" checked="checked" name="Cash On Delivery">Cash On Delivery</label>
+                  <div class="col-sm-6  checkout-payment-methods">
+                    <div class="panel-heading">
+                      <h4 class="panel-title"><i class="fa fa-credit-card"></i> Payment Method</h4>
                     </div>
-
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="Paypal">Paypal</label>
+                    <div class="panel-body">
+                      <p>Please select the preferred payment method to use on this order.</p>
+                      <ng-container *ngIf="user.payments && user.payments.length > 0">
+                        <div class="radio" *ngFor="let card of user.payments">
+                          <label>
+                            <input type="radio" checked="checked" name="card" formControlName="card" [value]="card">
+                            {{card.card.brand}} ending in {{card.card.last4}}
+                            expires {{card.card.exp_month}}/{{card.card.exp_year.toString().substr(-2)}}
+                          </label>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="addACard">
+                        <app-add-card (oncomplete)="cardAdded()"></app-add-card>
+                      </ng-container>
+                      <button class="btn btn-success" (click)="addCard()">Add a card</button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"><i class="fa fa-ticket"></i> Do you Have a Coupon or Voucher?</h4>
-                </div>
-                <div class="panel-body row">
-                  <div class="col-sm-6 ">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here"
-                             value="" name="coupon">
-                      <span class="input-group-btn">
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-ticket"></i> Do you Have a Coupon or Voucher?</h4>
+                  </div>
+                  <div class="panel-body row">
+                    <div class="col-sm-6 ">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here"
+                               value="" name="coupon">
+                        <span class="input-group-btn">
 							  <input type="button" class="btn btn-primary" data-loading-text="Loading..." id="button-coupon"
                        value="Apply Coupon">
 							  </span></div>
-                  </div>
+                    </div>
 
-                  <div class="col-sm-6">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="input-voucher"
-                             placeholder="Enter your gift voucher code here" value="" name="voucher">
-                      <span class="input-group-btn">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="input-voucher"
+                               placeholder="Enter your gift voucher code here" value="" name="voucher">
+                        <span class="input-group-btn">
 							  <input type="submit" class="btn btn-primary" data-loading-text="Loading..." id="button-voucher"
                        value="Apply Voucher">
 							  </span></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Shopping cart</h4>
-                </div>
-                <div class="panel-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead>
-                      <tr>
-                        <td class="text-center">Image</td>
-                        <td class="text-left">Product Name</td>
-                        <td class="text-left">Quantity</td>
-                        <td class="text-right">Unit Price</td>
-                        <td class="text-right">Total</td>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let item of cart">
-                        <td class="text-center"><a [routerLink]="item.slug"><img width="70px" [src]="item.image" [alt]="item.name"
-                                                                                 class="img-thumbnail"/></a></td>
-                        <td class="text-left">
-                          <a [routerLink]="item.slug">
-                            <strong>{{item.name}}</strong>
-                          </a>
-                          <br/>
-                          <ng-container *ngFor="let attr of item.attributes">
-                            {{attr.name}}: {{attr.option.name}} <br/>
-                          </ng-container>
-                        </td>
-                        <td class="text-left">
-                          {{item.quantity}}
-                        </td>
-                        <td class="text-right">${{item.rate|number:'1.2-2'}}</td>
-                        <td class="text-right">${{item.price|number:'1.2-2'}}</td>
-                      </tr>
-                      </tbody>
-                      <tfoot>
-                      <tr>
-                        <td class="text-right" colspan="4">
-                          <strong>Sub-Total:</strong>
-                        </td>
-                        <td class="text-right">${{cart|cartCalc:'sub-total'|number:'1.2-2'}}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-right" colspan="4">
-                          <strong>Coupon Discount:</strong>
-                        </td>
-                        <td class="text-right">$0.00</td>
-                      </tr>
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Shopping cart</h4>
+                  </div>
+                  <div class="panel-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                          <td class="text-center">Image</td>
+                          <td class="text-left">Product Name</td>
+                          <td class="text-left">Quantity</td>
+                          <td class="text-right">Unit Price</td>
+                          <td class="text-right">Total</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of cart">
+                          <td class="text-center"><a [routerLink]="item.slug"><img width="70px" [src]="item.image"
+                                                                                   [alt]="item.name"
+                                                                                   class="img-thumbnail"/></a></td>
+                          <td class="text-left">
+                            <a [routerLink]="item.slug">
+                              <strong>{{item.name}}</strong>
+                            </a>
+                            <br/>
+                            <ng-container *ngFor="let attr of item.attributes">
+                              {{attr.name}}: {{attr.option.name}} <br/>
+                            </ng-container>
+                          </td>
+                          <td class="text-left">
+                            {{item.quantity}}
+                          </td>
+                          <td class="text-right">${{item.rate|number:'1.2-2'}}</td>
+                          <td class="text-right">${{item.price|number:'1.2-2'}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Sub-Total:</strong>
+                          </td>
+                          <td class="text-right">${{cart|cartCalc:'sub-total'|number:'1.2-2'}}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Coupon Discount:</strong>
+                          </td>
+                          <td class="text-right">$0.00</td>
+                        </tr>
 
-                      <tr>
-                        <td class="text-right" colspan="4">
-                          <strong>Total:</strong>
-                        </td>
-                        <td class="text-right">${{cart|cartCalc:'total'|number:'1.2-2'}}</td>
-                      </tr>
-                      </tfoot>
-                    </table>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Total:</strong>
+                          </td>
+                          <td class="text-right">${{cart|cartCalc:'total'|number:'1.2-2'}}</td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"><i class="fa fa-pencil"></i> Add Comments About Your Order</h4>
-                </div>
-                <div class="panel-body">
-                  <textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
-                  <br>
-                  <label class="control-label" for="confirm_agree">
-                    <input type="checkbox" checked="checked" value="1" required="" class="validate required"
-                           id="confirm_agree" name="confirm agree">
-                    <span>I have read and agree to the <a class="agree"
-                                                          href="#"><b>Terms &amp; Conditions</b></a></span> </label>
-                  <div class="buttons">
-                    <div class="pull-right">
-                      <input type="button" class="btn btn-primary" id="button-confirm" value="Confirm Order">
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-pencil"></i> Add Comments About Your Order</h4>
+                  </div>
+                  <div class="panel-body">
+                    <textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
+                    <br>
+                    <label class="control-label" for="confirm_agree">
+                      <input type="checkbox" checked="checked" value="1" required="" class="validate required"
+                             id="confirm_agree" name="confirm agree">
+                      <span>I have read and agree to the <a class="agree"
+                                                            href="#"><b>Terms &amp; Conditions</b></a></span> </label>
+                    <div class="buttons">
+                      <div class="pull-right">
+                        <input type="button" class="btn btn-primary" id="button-confirm" value="Confirm Order" (click)="checkout()">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -166,9 +173,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <!--Middle Part End -->
-
+      <!--Middle Part End -->
+    </form>
   </div>
 </div>
 <!-- //Main Container -->
