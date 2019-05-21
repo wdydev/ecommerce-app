@@ -4,68 +4,117 @@
   <li><a href="#">My Account</a></li>
 </ul>
 
+
 <div class="row">
-  <div class="col-sm-9" id="content">
+  <!--Middle Part Start-->
+  <div id="content" class="col-sm-9">
+    <h2 class="title">Order Information</h2>
 
-    <div class="col-sm-9">
-      <!--Tabs Part Start-->
-      <h2 class="text-uppercase">{{order.user.name}}</h2>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <td colspan="2" class="text-left">Order Details</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td style="width: 50%;" class="text-left"> <b>Order ID:</b> {{order._id}}
+          <br>
+          <b>Date Added:</b> {{order.orderDate}}</td>
+        <td style="width: 50%;" class="text-left"> <b>Payment Method:</b> {{order.paymentType}}
+          <br>
+          <b>Shipping Method:</b> Flat Shipping Rate </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <td style="width: 50%; vertical-align: top;" class="text-left">Payment Information</td>
+        <td style="width: 50%; vertical-align: top;" class="text-left">Shipping Address</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-left">Brand: {{order.payment.card.brand}}
+          <br>Last Four Digit: {{order.payment.card.last4}}
+          <br>Expiration Date: {{order.payment.card.exp_month}}, {{order.payment.card.exp_year}}
+          <br>Funding Type: {{order.payment.card.funding}}
+          <br>Country : {{order.payment.card.country}}
+          </td>
+        <td class="text-left">{{order.user.name}}
+          <br>{{order.address.address}}
+          <br>{{order.address.address2}}
+          <br>{{order.address.city}}
+          <br>{{order.address.zipcode}}
+          <br>{{order.address.country}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <td class="text-left">Product Name</td>
+          <td class="text-left">Model</td>
+          <td class="text-right">Quantity</td>
+          <td class="text-right">Price</td>
+          <td class="text-right">Total</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of order.products">
+          <td class="text-left">{{item.name}} </td>
+          <td class="text-left">{{item.product}}</td>
+          <td class="text-right">{{item.quantity}}</td>
+          <td class="text-right">${{item.rate|number:'1.2-2'}}</td>
+          <td class="text-right">${{item.price|number:'1.2-2'}}</td>
 
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#tab-1"> Order History</a>
-        </li>
+        </tr>
 
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab-1">
+        </tbody>
+        <tfoot>
 
-          <div class="modal-body">
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Sub-Total</b>
+          </td>
+          <td class="text-right">${{order.products|orderCalc:'sub-total'|number:'1.2-2'}}</td>
+          <td></td>
 
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Order ID</th>
-                  <th>Name</th>
-                  <th>Order Date</th>
-                  <th>Status</th>
-                  <th>Total</th>
-                  <!--<th>Country</th>-->
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>{{order._id}}</td>
-                  <td>{{order.user.name}}</td>
-                  <td> {{order.orderDate}}</td>
-                  <td> {{order.status}}</td>
-                  <td> {{order.total}}</td>
-
-                </tr>
-
-                </tbody>
-              </table>
-            </div>
-
-          </div>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Flat Shipping Rate</b>
+          </td>
+          <td class="text-right">$7.99</td>
+          <td></td>
+        </tr>
 
 
-        </div>
-
-
-
-
-
-      </div>
-
-      <!--Tabs Part End-->
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Total</b>
+          </td>
+          <td class="text-right">${{order.products|orderCalc:'total'|number:'1.2-2'}}</td>
+          <td></td>
+        </tr>
+        </tfoot>
+      </table>
     </div>
 
-  </div>
+    <div class="buttons clearfix">
+      <div class="pull-right"><a class="btn btn-primary" [routerLink]="['/', 'admin', 'orders']">Back</a>
+      </div>
+    </div>
 
-  <app-admin-sidebar></app-admin-sidebar>
+
+
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+
+    <app-admin-sidebar></app-admin-sidebar>
+  <!--Right Part End -->
 </div>
 <br/>

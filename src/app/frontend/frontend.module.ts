@@ -37,7 +37,10 @@ import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
 import {OrderHistoryService} from './order-history/order-history.service';
 import {NgxStripeModule} from 'ngx-stripe';
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1ce0f8948cbb4ae7395964d45afd6c932a904490
 
 @NgModule({
   imports: [
@@ -68,9 +71,14 @@ import {NgxStripeModule} from 'ngx-stripe';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+<<<<<<< HEAD
+     AddCardComponent,
+    OrderHistoryComponent,
+=======
     AddCardComponent,
     OrderHistoryComponent,
     AccountSidebarComponent,
+>>>>>>> 1ce0f8948cbb4ae7395964d45afd6c932a904490
   ],
   providers: [
     AddressService,
@@ -81,11 +89,14 @@ import {NgxStripeModule} from 'ngx-stripe';
     LoginService,
     CategoryService,
     PaymentsService,
-    LoginService,
     AddCardService,
     CheckoutService,
     OrderHistoryService,
+<<<<<<< HEAD
+  ],
+=======
   ]
+>>>>>>> 1ce0f8948cbb4ae7395964d45afd6c932a904490
 })
 
 export class FrontendModule {
