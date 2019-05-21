@@ -13,8 +13,8 @@ export class AwsUploadComponent implements OnInit {
   @Input() folder: string;
   @Output('onupload') onUpload: EventEmitter<Array<string> | string>;
 
-  private files: Array<string> | string;
-  private s3: AWS.S3;
+  public files: Array<string> | string;
+  public s3: AWS.S3;
 
   constructor() {
     this.multiple = false;

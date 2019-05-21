@@ -12,10 +12,10 @@ import {UserService} from '../../services/user.service';
 
 export class PayementMethodsComponent implements OnInit {
 
-  private payment: Payment;
-  private form: FormGroup;
-  private payments: Array<Payment>;
-  private addACard: boolean;
+  public payment: Payment;
+  public form: FormGroup;
+  public payments: Array<Payment>;
+  public addACard: boolean;
 
   constructor(private  modal: ModalService, private  service: PaymentsService, private userService: UserService) {
     this.payments = [];

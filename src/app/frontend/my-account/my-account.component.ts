@@ -14,10 +14,10 @@ import {UserService} from '../../services/user.service';
 })
 
 export class MyAccountComponent implements OnInit {
-  private userForm: FormGroup;
-  private passwordForm: FormGroup;
+  public userForm: FormGroup;
+  public passwordForm: FormGroup;
 
-  private user: UserI;
+  public user: UserI;
 
   constructor(
     private  modal: ModalService,

@@ -10,8 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ConfirmationComponent implements OnInit {
 
-  private user: UserI;
-  private id: string;
+  public user: UserI;
+  public id: string;
 
   constructor(
     private userService: UserService,

@@ -10,9 +10,9 @@ import {Order} from '../../entity/order';
   templateUrl: './user-detail.component.html'
 })
 export class UserDetailComponent {
-  private id: string;
-  private user: UserI;
-  private orders: Array<Order>;
+  public id: string;
+  public user: UserI;
+  public orders: Array<Order>;
 
   constructor(private modal: ModalService, private route: ActivatedRoute, private service: UserDeatilService) {
     this.orders = [];
