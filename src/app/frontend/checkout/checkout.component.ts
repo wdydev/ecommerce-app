@@ -76,7 +76,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     this.service.removeAll();
-    this.router.navigate(['my-account']);
+    this.router.navigate(['confirmation']);
   }
 
   public ngOnInit(): void {
