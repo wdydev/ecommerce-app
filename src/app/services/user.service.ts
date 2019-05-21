@@ -17,6 +17,10 @@ export class UserService extends Subject<UserI> {
     this.user$ = new Subject();
     this.type$ = new Subject();
     this.token$ = new Subject();
+
+    this.userToken = this.readFromStorage('token');
+    this.userType = this.readFromStorage('userType');
+    this.readUser();
   }
 
   private readFromStorage(key: string) {
@@ -57,7 +61,7 @@ export class UserService extends Subject<UserI> {
   }
 
   get token() {
-    return this.userType;
+    return this.userToken;
   }
 
   set token(token: string) {
