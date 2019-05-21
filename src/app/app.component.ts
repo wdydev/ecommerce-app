@@ -5,6 +5,8 @@ import {AppService} from './services/app.service';
 import {CategoryDisplayI} from './entity/category';
 import {CartService} from './services/cart.service';
 import {CartItem} from './entity/cart.item';
+import {UserService} from './services/user.service';
+import {UserI} from './entity/user';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +18,13 @@ export class AppComponent implements OnInit {
   private title: string;
   private categories: Array<CategoryDisplayI>;
   private cart: Array<CartItem>;
+  private user: UserI;
 
   constructor(private router: Router,
               private renderer: Renderer2,
               private service: AppService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private userService: UserService) {
     // watch for change in navigation
     this.watchNavigation();
 
@@ -31,6 +35,9 @@ export class AppComponent implements OnInit {
     this.title = 'eMarket';
 
     this.cart = this.cartService.getItems();
+
+    this.user = userService.user;
+    userService.user$.subscribe(user => this.user = user);
   }
 
   private watchNavigation(): void {
@@ -58,6 +65,11 @@ export class AppComponent implements OnInit {
     this.cartService.subscribe(items => {
       this.cart = items;
     });
+  }
+
+  public logout() {
+    this.userService.logout();
+    this.router.navigate(['']);
   }
 
   public ngOnInit(): void {
