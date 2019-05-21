@@ -19,10 +19,10 @@ export class AwsUploadComponent implements OnInit {
     this.folder = 'images';
     this.onUpload = new EventEmitter();
 
-    const credentials = new AWS.Credentials({
-      accessKeyId: 'AKIAQQX5RXLZN6OZQI7K',
-      secretAccessKey: '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'
+    const credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'us-east-2:c7b15228-9bf0-472f-913c-0978744985c5',
     });
+
     AWS.config.update({
       region: 'us-east-2',
       credentials
