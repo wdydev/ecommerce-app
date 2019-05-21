@@ -14,7 +14,6 @@ export class AddressesComponent implements OnInit {
   private form: FormGroup;
   private addresses: Array<Address>;
 
-
   constructor(private  modal: ModalService, private service: AddressService) {
     this.addresses = [];
   }
@@ -49,6 +48,9 @@ export class AddressesComponent implements OnInit {
     }
 
     this.addresses.push(address);
+
+    this.loadAddresses();
+
     this.cancel();
   }
 
@@ -66,6 +68,7 @@ export class AddressesComponent implements OnInit {
   public async loadAddresses() {
     this.addresses = await this.service.getAddresses();
   }
+
   public ngOnInit(): void {
     this.loadAddresses();
   }

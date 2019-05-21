@@ -8,11 +8,7 @@ export interface UserI {
   email: string;
   password: string;
   phoneNumber: string;
-<<<<<<< HEAD
   addresses: Array<Address>;
-=======
-   addresses: Array<Address>;
->>>>>>> 3c1885f3c53853d234404cf37f57a10c7f2cd8fa
   addAddress: (address: Address) => void;
   payments: Array<Payment>;
   addPayment: (payment: Payment) => void;

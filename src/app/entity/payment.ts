@@ -4,5 +4,4 @@ export interface Payment {
   expirationDate: string;
   cardType: string;
   cardOwner: string;
-
 }

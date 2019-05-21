@@ -15,7 +15,7 @@ import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {OrderInformationComponent} from './order-information/order-information.component';
 import {AddressesComponent} from './addresses/addresses.component';
-import {PayementMethodsComponent} from './payement-methods/payement-methods';
+import {PayementMethodsComponent} from './payment-methods/payments.component';
 import {SearchComponent} from './search/search.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
@@ -27,13 +27,11 @@ import {RegisterService} from './register/register.service';
 import {MyAccountServices} from './my-account/my-account.services';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
-<<<<<<< HEAD
-=======
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
+import {PaymentsService} from './payment-methods/payments.service';
 
->>>>>>> 3c1885f3c53853d234404cf37f57a10c7f2cd8fa
 
 @NgModule({
   imports: [
@@ -41,12 +39,8 @@ import {LoginService} from './login/login.service';
     CarouselModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-<<<<<<< HEAD
-
-=======
     PipesModule,
     GuardsModule
->>>>>>> 3c1885f3c53853d234404cf37f57a10c7f2cd8fa
   ],
   declarations: [
     HomeComponent,
@@ -67,18 +61,18 @@ import {LoginService} from './login/login.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+
+
   ],
   providers: [
     AddressService,
     RegisterService,
     MyAccountServices,
     HomeService,
-<<<<<<< HEAD
-    ProductService
-=======
     ProductService,
-    LoginService
->>>>>>> 3c1885f3c53853d234404cf37f57a10c7f2cd8fa
+    ProductService,
+    LoginService,
+    PaymentsService
   ],
 })
 export class FrontendModule {
