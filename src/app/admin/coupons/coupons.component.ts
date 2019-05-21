@@ -3,7 +3,6 @@ import {ModalService} from '../../services/modal.service';
 import {Coupon, CouponI} from '../../entity/coupon';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CouponService} from './coupon.service';
-import {Address} from '../../entity/address';
 
 @Component({
   selector: 'app-admin-coupons',
