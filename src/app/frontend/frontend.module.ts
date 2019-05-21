@@ -37,6 +37,7 @@ import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
 import {OrderHistoryService} from './order-history/order-history.service';
 import {NgxStripeModule} from 'ngx-stripe';
+import {OrderInformationService} from './order-information/order-information.service';
 
 @NgModule({
   imports: [
@@ -68,8 +69,6 @@ import {NgxStripeModule} from 'ngx-stripe';
     FaqComponent,
     AccountSidebarComponent,
     AddCardComponent,
-    OrderHistoryComponent,
-    AccountSidebarComponent,
   ],
   providers: [
     AddressService,
@@ -83,6 +82,7 @@ import {NgxStripeModule} from 'ngx-stripe';
     AddCardService,
     CheckoutService,
     OrderHistoryService,
+    OrderInformationService
   ]
 })
 
