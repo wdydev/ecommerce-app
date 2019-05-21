@@ -11,6 +11,7 @@ export interface Order {
   products: Array<CartItem>;
   total: number;
   shippingCost: number;
+  orderDate: Date;
   user: UserI;
   coupon?: CouponI;
   paymentType: 'paypal' | 'stripe';

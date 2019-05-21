@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {Payment} from '../../entity/Payment';
+import {Payment} from '../../entity/payment';
 import {UserI} from '../../entity/user';
-import {promise} from 'selenium-webdriver';
 
 @Injectable()
 export class PaymentsService {

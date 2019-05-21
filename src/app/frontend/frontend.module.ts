@@ -27,6 +27,7 @@ import {RegisterService} from './register/register.service';
 import {MyAccountServices} from './my-account/my-account.services';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
+import {CategoryService} from './category/category.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
@@ -34,8 +35,11 @@ import {PaymentsService} from './payment-methods/payments.service';
 import {AddCardComponent} from './add-card/add.card.component';
 import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
+<<<<<<< HEAD
 import {OrderHistoryService} from './order-history/order-history.service';
 import {NgxStripeModule} from 'ngx-stripe';
+=======
+>>>>>>> 16c07071ee57b6a312a8cc039070f06678113f2d
 
 @NgModule({
   imports: [
@@ -66,8 +70,13 @@ import {NgxStripeModule} from 'ngx-stripe';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+<<<<<<< HEAD
      AddCardComponent,
     OrderHistoryComponent
+=======
+    AccountSidebarComponent,
+    AddCardComponent,
+>>>>>>> 16c07071ee57b6a312a8cc039070f06678113f2d
   ],
   providers: [
     AddressService,
@@ -75,13 +84,21 @@ import {NgxStripeModule} from 'ngx-stripe';
     MyAccountServices,
     HomeService,
     ProductService,
+<<<<<<< HEAD
     ProductService,
     LoginService,
+=======
+
+    CategoryService,
+>>>>>>> 16c07071ee57b6a312a8cc039070f06678113f2d
     PaymentsService,
     LoginService,
     AddCardService,
     CheckoutService,
+<<<<<<< HEAD
     OrderHistoryService,
+=======
+>>>>>>> 16c07071ee57b6a312a8cc039070f06678113f2d
   ],
 })
 export class FrontendModule {

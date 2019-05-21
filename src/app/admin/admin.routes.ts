@@ -6,6 +6,7 @@ import {OrdersComponent} from './orders/orders.component';
 import {CouponsComponent} from './coupons/coupons.component';
 import {UsersComponent} from './user/users.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
+import {OrderDetailComponent} from './order-detail/order-detail.component';
 
 export const routes: Routes = [
   {
@@ -22,7 +23,17 @@ export const routes: Routes = [
   },
   {
     path: 'orders',
-    component: OrdersComponent
+    children: [
+      {
+        path: '',
+        component: OrdersComponent
+      },
+      {
+        path: ':id',
+        component: OrderDetailComponent
+      }
+    ]
+
   },
   {
     path: 'coupons',
