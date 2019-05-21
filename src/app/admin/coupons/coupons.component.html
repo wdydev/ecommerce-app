@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a [routerLink]="['', 'admin']">Admin </a></li>
+  <li><a  [routerLink]="['', 'admin', 'coupons']"> Coupons </a></li>
 </ul>
 
 <div class="row">
@@ -37,10 +37,10 @@
           <td>{{coupon.code}}</td>
           <td>{{coupon.discountType}}</td>
           <td> {{coupon.discountAmount}}</td>
-          <td>{{coupon.startDate}}</td>
-          <td>{{coupon.endDate}}</td>
           <td>{{coupon.minimumCost}}</td>
           <td>{{coupon.maximumCost}}</td>
+          <td>{{coupon.startDate}}</td>
+          <td>{{coupon.endDate}}</td>
           <td> {{coupon.status}}</td>
 
           <td><span class="input-group-btn">
@@ -89,7 +89,7 @@
 
             <select id="discount-type" class="form-control" name="discount-type" formControlName="discountType">
               <option value="" selected>--none--</option>
-              <option value="percentage">Percentage</option>
+              <!--<option value="percentage">Percentage</option>-->
               <option value="fixed">Fixed</option>
             </select>
             <br>

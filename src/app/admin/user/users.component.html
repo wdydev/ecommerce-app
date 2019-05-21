@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a [routerLink]="['', 'admin']">Admin</a></li>
+  <li><a [routerLink]="['', 'admin', 'users']">User</a></li>
 </ul>
 
 <div class="row">
@@ -31,8 +31,8 @@
           <td><span class="input-group-btn">
               <a [routerLink]="['/', 'admin', 'users', user._id]" data-toggle="tooltip" title="View"
                  class="btn btn-success">   <i class="fa fa-eye">  </i> </a>
-            <!--<button type="button" data-toggle="tooltip" title="Update" class="btn btn-info"-->
-            <!--(click)="getUser(user)"><i class="fa fa-pencil"></i></button>-->
+            <button type="button" data-toggle="tooltip" title="Update" class="btn btn-info"
+            (click)="getUser(user)"><i class="fa fa-pencil"></i></button>
            <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger"
                    (click)="deleteUser(user)"><i class="fa fa-times-circle"></i></button>
                         </span></td>
