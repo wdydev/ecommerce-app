@@ -20,8 +20,9 @@ import {ProductService} from './products/product.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {PipesModule} from '../pipes/pipes.module';
 import {UserDeatilService} from './user-detail/user-detail.service';
-import {OrderHistoryComponent} from './order-history/order-history.component';
-import {OrderHistoryService} from './order-history/order-history.service';
+import {OrdersService} from './orders/orders.service';
+import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {OrderDetailService} from './order-detail/order-detail.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import {OrderHistoryService} from './order-history/order-history.service';
     AwsUploadComponent,
     UsersComponent,
     UserDetailComponent,
-    OrderHistoryComponent
+    OrderDetailComponent,
   ],
   providers: [
     CategoryService,
@@ -51,7 +52,8 @@ import {OrderHistoryService} from './order-history/order-history.service';
     UsersService,
     ProductService,
     UserDeatilService,
-    OrderHistoryService
+    OrdersService,
+    OrderDetailService,
   ],
 })
 export class AdminModule {

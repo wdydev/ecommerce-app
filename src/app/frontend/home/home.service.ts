@@ -24,7 +24,7 @@ export class HomeService {
     });
 
     this.latest = this.latest.slice(0, 5);
-    this.recommended = this.allProducts.slice(0, 5);
+    this.recommended = this.allProducts.slice(0, 20);
   }
 
   public async getLatest(): Promise<Array<ProductI>> {

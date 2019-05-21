@@ -12,10 +12,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {CategoryService as AdminCategoryService} from './admin/category/category.service';
 import {CartCalc} from './pipes/cart.calc';
 import {PipesModule} from './pipes/pipes.module';
+import {OrdersService} from './admin/orders/orders.service';
+import {OrdersComponent} from './admin/orders/orders.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

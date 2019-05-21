@@ -31,6 +31,10 @@ import {CategoryService} from './category/category.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
+import {AddCardComponent} from './add-card/add.card.component';
+import {NgxStripeModule} from 'ngx-stripe';
+import {AddCardService} from './add-card/add.card.service';
+import {CheckoutService} from './checkout/checkout.service';
 
 
 
@@ -41,7 +45,8 @@ import {LoginService} from './login/login.service';
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     PipesModule,
-    GuardsModule
+    GuardsModule,
+    NgxStripeModule.forRoot('pk_test_UCGXGDKTNIrBPvNzjorGnvoU00jGwcSnvm')
   ],
   declarations: [
     HomeComponent,
@@ -62,7 +67,8 @@ import {LoginService} from './login/login.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-    AccountSidebarComponent
+    AccountSidebarComponent,
+    AddCardComponent,
   ],
   providers: [
     AddressService,
@@ -71,8 +77,9 @@ import {LoginService} from './login/login.service';
     HomeService,
     ProductService,
     CategoryService,
-    LoginService
-
+    LoginService,
+    AddCardService,
+    CheckoutService,
   ],
 })
 export class FrontendModule {
