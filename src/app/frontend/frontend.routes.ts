@@ -10,7 +10,7 @@ import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {OrderInformationComponent} from './order-information/order-information.component';
 import {AddressesComponent} from './addresses/addresses.component';
-import {PayementMethodsComponent} from './payement-methods/payement-methods';
+import {PayementMethodsComponent} from './payment-methods/payments.component';
 import {SearchComponent} from './search/search.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';

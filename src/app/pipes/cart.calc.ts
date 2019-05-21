@@ -24,6 +24,9 @@ export class CartCalc implements PipeTransform {
   }
 
   public total(items: Array<CartItem>): number {
+    if (items.length === 0) {
+      return 0;
+    }
     return items.reduce((sum: number, item: CartItem) => sum + item.price, 0) + 7.99;
   }
 
