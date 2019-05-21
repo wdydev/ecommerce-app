@@ -66,8 +66,8 @@ export class AddressesComponent implements OnInit {
   public async loadAddresses() {
     this.addresses = await this.service.getAddresses();
   }
-
   public ngOnInit(): void {
     this.loadAddresses();
   }
+
 }
