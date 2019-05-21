@@ -25,6 +25,10 @@ export class PayementMethodsComponent implements OnInit {
     this.addACard = true;
   }
 
+  public cardAdded() {
+    this.addACard = false;
+  }
+
   public async paymentMethodForm(template: TemplateRef<any>, payment: any = {}) {
     this.payment = payment;
     this.form = new FormGroup({
