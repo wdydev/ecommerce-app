@@ -21,7 +21,7 @@ export class AccountSidebarComponent {
       myAccount: ['', 'my-account'],
       addressBooks: ['', 'my-account', 'addresses'],
       paymentmethods: ['', 'my-account', 'payment-methods'],
-      orderHistory: ['', '', 'order-history'],
+      orderHistory: ['', 'my-account', 'orders'],
     };
   }
 
