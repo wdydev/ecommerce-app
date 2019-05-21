@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as AWS from 'aws-sdk';
+import {environment} from '../../environments/environment';
+
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,22 +18,22 @@ export class AwsUploadComponent implements OnInit {
 
   constructor() {
     this.multiple = false;
-    this.folder = 'images';
+    this.folder = environment.awsFolder;
     this.onUpload = new EventEmitter();
 
     const credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: 'us-east-2:c7b15228-9bf0-472f-913c-0978744985c5',
+      IdentityPoolId: environment.awsPoolId,
     });
 
     AWS.config.update({
-      region: 'us-east-2',
+      region: environment.awsRegion,
       credentials
     });
 
     const config: AWS.S3.ClientConfiguration = {
       apiVersion: 'latest',
       useDualstack: true,
-      endpoint: 'https://mwa2019.us-east-2.amazonaws.com/'
+      endpoint: environment.awsEndpoint
     };
 
     this.s3 = new AWS.S3();
@@ -45,7 +47,7 @@ export class AwsUploadComponent implements OnInit {
           Key: `${this.folder}/${file.name}`,
           Body: file,
           ContentType: 'image/jpeg',
-          Bucket: 'mwa2019'
+          Bucket: environment.awsBucket
         })
         .promise();
 
