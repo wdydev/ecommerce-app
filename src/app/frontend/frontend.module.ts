@@ -25,6 +25,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AddressService} from './addresses/address.service';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
+import {CategoryService} from './category/category.service';
 
 
 @NgModule({
@@ -52,13 +53,13 @@ import {ProductService} from './product/product.service';
     AboutUsComponent,
     ConfirmationComponent,
     FaqComponent,
-    AccountSidebarComponent,
-
+    AccountSidebarComponent
   ],
   providers: [
     AddressService,
     HomeService,
-    ProductService
+    ProductService,
+    CategoryService
   ],
 })
 export class FrontendModule {
