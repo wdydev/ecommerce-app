@@ -5,11 +5,6 @@ export interface UserI {
   name: string;
   mobile: string;
   email: string;
-  password: string;
-  addresses: Array<Address>;
-  addAddress: (address: Address) => void;
-  payments: Array<Payment>;
-  addPayment: (payment: Payment) => void;
   password?: string;
   addresses?: Array<Address>;
   addAddress?: (address: Address) => void;
@@ -22,9 +17,10 @@ export class User implements UserI {
   public name: string;
   public mobile: string;
   public email: string;
-  public password: string;
-  public payments: Array<Payment>;
-  public addresses: Array<Address>;
+  public password?: string;
+  public payments?: Array<Payment>;
+  public addresses?: Array<Address>;
+  // tslint:disable-next-line:variable-name
   public _id?: string;
 
   constructor(user: User) {
