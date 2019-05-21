@@ -16,7 +16,7 @@ export class RequestInterceptor implements HttpInterceptor {
     const request = req.clone({
       setHeaders: {
         Authorization: `Bearer ${this.service.token}`,
-        'X-USER-TYPE': this.service.type
+        'X-USER-TYPE': this.service.type || 'user'
       }
     });
 
