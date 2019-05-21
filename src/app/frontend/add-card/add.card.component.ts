@@ -33,7 +33,7 @@ export class AddCardComponent implements OnInit {
   @Output('oncomplete') onComplete: EventEmitter<boolean>;
 
   constructor(private stripeService: StripeService, private modal: ModalService, private  service: AddCardService) {
-
+    this.onComplete = new EventEmitter();
   }
 
   public addCreditCard() {
