@@ -15,7 +15,7 @@
         </td>
 
         <td class="text-right">
-          <a href="product.html">Add Payment</a>
+          <button class="btn btn-success" (click)="addCard()">Add a card</button>
         </td>
       </tr>
     </table>
@@ -38,10 +38,8 @@
           <td class="text-center">{{card.card.brand}}</td>
           <td class="text-center">{{card.card.exp_month}} / {{card.card.exp_year}}</td>
           <td class="text-center">
-            <button class="btn btn-info" (click)="paymentMethodForm(paymentMethodForm,card)">
-              <i class="fa fa-pencil"></i>
-            </button>
-            <button class="btn btn-info" (click)="deletePaymentMethod(card)">
+
+            <button class="btn btn-danger" (click)="deletePaymentMethod(card)">
               <i class="fa fa-trash"></i>
             </button>
           </td>
