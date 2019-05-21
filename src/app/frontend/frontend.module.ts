@@ -31,7 +31,11 @@ import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
 import {PaymentsService} from './payment-methods/payments.service';
-
+import {AddCardComponent} from './add-card/add.card.component';
+import {AddCardService} from './add-card/add.card.service';
+import {CheckoutService} from './checkout/checkout.service';
+import {OrderHistoryService} from './order-history/order-history.service';
+import {NgxStripeModule} from 'ngx-stripe';
 
 @NgModule({
   imports: [
@@ -40,7 +44,8 @@ import {PaymentsService} from './payment-methods/payments.service';
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     PipesModule,
-    GuardsModule
+    GuardsModule,
+    NgxStripeModule.forRoot('pk_test_UCGXGDKTNIrBPvNzjorGnvoU00jGwcSnvm')
   ],
   declarations: [
     HomeComponent,
@@ -61,8 +66,8 @@ import {PaymentsService} from './payment-methods/payments.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-
-
+     AddCardComponent,
+    OrderHistoryComponent
   ],
   providers: [
     AddressService,
@@ -72,7 +77,11 @@ import {PaymentsService} from './payment-methods/payments.service';
     ProductService,
     ProductService,
     LoginService,
-    PaymentsService
+    PaymentsService,
+    LoginService,
+    AddCardService,
+    CheckoutService,
+    OrderHistoryService,
   ],
 })
 export class FrontendModule {

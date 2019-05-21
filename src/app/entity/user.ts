@@ -4,33 +4,28 @@ import {Payment} from './payment';
 export interface UserI {
   name: string;
   mobile: string;
-  fullName: string;
   email: string;
-  password: string;
-  phoneNumber: string;
-  addresses: Array<Address>;
-  addAddress: (address: Address) => void;
-  payments: Array<Payment>;
-  addPayment: (payment: Payment) => void;
+  password?: string;
+  addresses?: Array<Address>;
+  addAddress?: (address: Address) => void;
+  payments?: Array<Payment>;
+  addPayment?: (payment: Payment) => void;
   _id?: string;
 }
 
 export class User implements UserI {
   public name: string;
   public mobile: string;
-  public fullName: string;
   public email: string;
   public password: string;
-  public phoneNumber: string;
   public payments: Array<Payment>;
   public addresses: Array<Address>;
+  // tslint:disable-next-line:variable-name
   public _id?: string;
 
   constructor(user: User) {
-    this.fullName = user.fullName;
     this.email = user.email;
     this.password = user.password;
-    this.phoneNumber = user.phoneNumber;
     this.payments = [];
     this.addresses = [];
     this._id = user._id;
