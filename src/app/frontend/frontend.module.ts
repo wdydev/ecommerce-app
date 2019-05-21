@@ -38,7 +38,6 @@ import {CheckoutService} from './checkout/checkout.service';
 import {OrderHistoryService} from './order-history/order-history.service';
 import {NgxStripeModule} from 'ngx-stripe';
 import {OrderInformationService} from './order-information/order-information.service';
-import {ConfirmationService} from './confirmation/confirmation.service';
 
 @NgModule({
   imports: [

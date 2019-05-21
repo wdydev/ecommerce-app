@@ -22,9 +22,5 @@ export class OrderInformationComponent {
   public async loadOrder() {
     this.order = await this.service.getOrder(this.id);
   }
-
-
-
-
 }
 

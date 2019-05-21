@@ -1,10 +1,10 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
   <li><a href="#">Admin</a></li>
-  <li><a  [routerLink]="['/', 'admin', 'users']">User Detail</a></li>
+  <li><a [routerLink]="['/', 'admin', 'users']">User Detail</a></li>
 </ul>
 
-<div class="row">
+<div class="row" *ngIf="user && user._id">
   <div class="col-sm-9" id="content">
 
     <div class="col-sm-8">
@@ -14,12 +14,12 @@
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#tab-1">Profile</a>
         </li>
-        <!--<li><a data-toggle="tab" href="#tab-2">Payment Methods</a>-->
-        <!--</li>-->
+        <li><a data-toggle="tab" href="#tab-2">Payment Methods</a>
+        </li>
         <li><a data-toggle="tab" href="#tab-3">Addresses</a>
         </li>
-        <!--<li><a data-toggle="tab" href="#tab-3">Order History</a>-->
-        <!--</li>-->
+        <li><a data-toggle="tab" href="#tab-4">Order History</a>
+        </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab-1">
@@ -56,7 +56,32 @@
 
 
         </div>
+        <div class="tab-pane" id="tab-2">
 
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <td class="text-center">Card No</td>
+                <td class="text-center">Card Type</td>
+                <td class="text-center">Brand</td>
+                <td class="text-center">Expire on</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let card of user.payments">
+
+                <td class="text-center">#{{card.card.last4}}</td>
+                <td class="text-center">{{card.card.funding}}</td>
+                <td class="text-center">{{card.card.brand}}</td>
+                <td class="text-center">{{card.card.exp_month}}/{{card.card.exp_year.toString().substr(-2)}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
         <div class="tab-pane" id="tab-3">
 
           <div class="modal-body">
@@ -76,9 +101,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let u of user.addresses">
+                <tr *ngFor="let u of user.addresses;let i = index;">
                   <!--<tr >-->
-                  <th scope="row">1</th>
+                  <th scope="row">{{i + 1}}</th>
                   <td>{{u.address2}}</td>
                   <td>{{u.city}}</td>
                   <td>{{u.state}}</td>
@@ -93,15 +118,43 @@
           </div>
 
         </div>
+        <div class="tab-pane" id="tab-4">
 
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <td class="text-center">Order No</td>
+                <td class="text-center">Date</td>
+                <td class="text-center">Status</td>
+                <td class="text-center">Total</td>
+                <td></td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of orders">
 
+                <td class="text-center">{{order._id}}</td>
+                <td class="text-center">{{order.orderDate|date:'MM-dd-yyyy'}}</td>
+                <td class="text-center">{{order.status|orderStatus}}</td>
+                <td class="text-center">${{order.total|number:'1.2-2'}}</td>
 
+                <td class="text-center">
 
+              <span class="input-group-btn">
+                 <a [routerLink]="['', 'admin', 'orders', order._id]" data-toggle="tooltip" title="View"
+                    class="btn btn-success">   <i class="fa fa-eye">  </i> </a>
+              </span>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
       <!--Tabs Part End-->
     </div>
-
   </div>
 
   <app-admin-sidebar></app-admin-sidebar>
