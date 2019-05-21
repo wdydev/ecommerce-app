@@ -1,4 +1,3 @@
-/* tslint:disable:variable-name */
 import {Address} from './address';
 import {Payment} from './payment';
 
@@ -6,6 +5,11 @@ export interface UserI {
   name: string;
   mobile: string;
   email: string;
+  password: string;
+  addresses: Array<Address>;
+  addAddress: (address: Address) => void;
+  payments: Array<Payment>;
+  addPayment: (payment: Payment) => void;
   password?: string;
   addresses?: Array<Address>;
   addAddress?: (address: Address) => void;

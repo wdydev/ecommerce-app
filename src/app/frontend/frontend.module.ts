@@ -15,7 +15,7 @@ import {MyAccountComponent} from './my-account/my-account.component';
 import {OrderHistoryComponent} from './order-history/order-history.component';
 import {OrderInformationComponent} from './order-information/order-information.component';
 import {AddressesComponent} from './addresses/addresses.component';
-import {PayementMethodsComponent} from './payement-methods/payement-methods';
+import {PayementMethodsComponent} from './payment-methods/payments.component';
 import {SearchComponent} from './search/search.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
@@ -30,12 +30,12 @@ import {ProductService} from './product/product.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
+import {PaymentsService} from './payment-methods/payments.service';
 import {AddCardComponent} from './add-card/add.card.component';
 import {NgxStripeModule} from 'ngx-stripe';
 import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
-
-
+ 
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +65,6 @@ import {CheckoutService} from './checkout/checkout.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-    AddCardComponent,
   ],
   providers: [
     AddressService,
@@ -73,6 +72,7 @@ import {CheckoutService} from './checkout/checkout.service';
     MyAccountServices,
     HomeService,
     ProductService,
+    PaymentsService
     LoginService,
     AddCardService,
     CheckoutService,
