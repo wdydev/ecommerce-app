@@ -9,17 +9,17 @@
 
     <div class="col-sm-8">
       <!--Tabs Part Start-->
-      <h2 class="text-uppercase">User Information</h2>
+      <h2 class="text-uppercase"> {{user.name}} Information</h2>
 
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#tab-1">Profile</a>
         </li>
-        <li><a data-toggle="tab" href="#tab-2">Payment Methods</a>
-        </li>
+        <!--<li><a data-toggle="tab" href="#tab-2">Payment Methods</a>-->
+        <!--</li>-->
         <li><a data-toggle="tab" href="#tab-3">Addresses</a>
         </li>
-        <li><a data-toggle="tab" href="#tab-3">Order History</a>
-        </li>
+        <!--<li><a data-toggle="tab" href="#tab-3">Order History</a>-->
+        <!--</li>-->
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab-1">
@@ -34,55 +34,26 @@
                   <th>Full Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
+                  <!--<th>Country</th>-->
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr  >
-                  <th scope="row">1</th>
-                  <td>{{user.email}}</td>
-                  <td>{{user.email}}</td>
-                  <td> {{user.phoneNumber}}</td>
-
-                </tr>
-
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-
-
-        </div>
-        <div class="tab-pane" id="tab-2">
-
-          <div class="modal-body">
-
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Card Type</th>
-                  <th>Card Number</th>
-                  <th>Expiration Date</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr >
                   <th scope="row">1</th>
-                  <td>{{user.paymentMethod}}</td>
+                  <td>{{user.name}}</td>
                   <td>{{user.email}}</td>
-                  <td> {{user.email}}</td>
+                  <td> {{user.mobile}}</td>
+                  <!--<td> {{user.addresses[0].country}}</td>-->
 
                 </tr>
 
                 </tbody>
               </table>
             </div>
+
           </div>
+
 
         </div>
 
@@ -94,20 +65,25 @@
               <table class="table table-hover">
                 <thead>
                 <tr>
+
                   <th>#</th>
-                  <th>Address 1</th>
-                  <th>Addess 2</th>
-                  <th>Address 3</th>
+                  <th>Street</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Zip</th>
+                  <th>Country</th>
 
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
+                <tr *ngFor="let u of user.addresses">
+                  <!--<tr >-->
                   <th scope="row">1</th>
-                  <td>{{user.fullName}}</td>
-                  <td>{{user.email}}</td>
-                  <td> {{user.email}}</td>
+                  <td>{{u.address2}}</td>
+                  <td>{{u.city}}</td>
+                  <td>{{u.state}}</td>
+                  <td>{{u.zipcode}}</td>
+                  <td>{{u.country}}</td>
 
                 </tr>
 
@@ -118,37 +94,7 @@
 
         </div>
 
-        <div class="tab-pane" id="tab-4">
 
-          <div class="modal-body">
-
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Item</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr>
-                  <th scope="row">1</th>
-                  <td>{{user.fullName}}</td>
-                  <td>{{user.email}}</td>
-                  <td> {{user.email}}</td>
-
-                </tr>
-
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </div>
 
 
       </div>

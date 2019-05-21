@@ -27,14 +27,17 @@ import {RegisterService} from './register/register.service';
 import {MyAccountServices} from './my-account/my-account.services';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
+import {CategoryService} from './category/category.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
 import {PaymentsService} from './payment-methods/payments.service';
 import {AddCardComponent} from './add-card/add.card.component';
-import {NgxStripeModule} from 'ngx-stripe';
 import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
+import {OrderHistoryService} from './order-history/order-history.service';
+import {NgxStripeModule} from 'ngx-stripe';
+
 
 @NgModule({
   imports: [
@@ -66,6 +69,8 @@ import {CheckoutService} from './checkout/checkout.service';
     FaqComponent,
     AccountSidebarComponent,
     AddCardComponent,
+    OrderHistoryComponent,
+    AccountSidebarComponent,
   ],
   providers: [
     AddressService,
@@ -73,12 +78,16 @@ import {CheckoutService} from './checkout/checkout.service';
     MyAccountServices,
     HomeService,
     ProductService,
+    LoginService,
+    CategoryService,
     PaymentsService,
     LoginService,
     AddCardService,
     CheckoutService,
-  ],
+    OrderHistoryService,
+  ]
 })
+
 export class FrontendModule {
 
 }
