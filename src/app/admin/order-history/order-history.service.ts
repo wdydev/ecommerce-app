@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {UserI} from '../../entity/user';
 
 @Injectable()
-export class UsersService {
+export class OrderHistoryService {
   constructor(private api: ApiService) {
   }
 

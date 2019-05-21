@@ -1,81 +1,84 @@
+<ul class="breadcrumb">
+  <li><a href="#"><i class="fa fa-home"></i></a></li>
+  <li><a href="#">Account</a></li>
+  <li><a href="#">My Account</a></li>
+</ul>
 
-  <ul class="breadcrumb">
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-    <li><a href="#">Account</a></li>
-    <li><a href="#">My Account</a></li>
-  </ul>
+<div class="row" *ngIf="user && user._id">
+  <!--Middle Part Start-->
+  <div class="col-sm-9" id="content">
+    <h2 class="title">My Account</h2>
+    <p class="lead">Hello, <strong>Jhone Cary!</strong> - To update your account information.</p>
 
-  <div class="row">
-    <!--Middle Part Start-->
-    <div class="col-sm-9" id="content">
-      <h2 class="title">My Account</h2>
-      <p class="lead">Hello, <strong>Jhone Cary!</strong> - To update your account information.</p>
-      <form [formGroup]="form">
-        <div class="row">
-          <div class="col-sm-6">
-            <fieldset id="personal-details">
-              <legend>Personal Details</legend>
-              <div class="form-group required">
-                <label for="input-fullname" class="control-label">Full Name</label>
-                <input type="text" class="form-control" id="input-firstname" placeholder="Full Name" value="" name="fullname">
-              </div>
+    <div class="row">
+      <div class="col-sm-6">
 
-              <div class="form-group required">
-                <label for="input-email" class="control-label" >E-Mail</label>
-                <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" readonly>
-              </div>
-              <div class="form-group required">
-                <label for="input-telephone" class="control-label">Telephone</label>
-                <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone">
-              </div>
+        <form [formGroup]="userForm">
+          <fieldset id="personal-details">
+            <legend>Personal Details</legend>
+            <div class="form-group required">
+              <label   class="control-label">Full Name</label>
+              <input type="text" class="form-control" id="input-firstname" placeholder="Full Name" value="" name="name"
+                     formControlName="name">
+            </div>
 
+            <div class="form-group required">
+              <label  class="control-label">E-Mail</label>
+              <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email"
+                     readonly formControlName="email">
+            </div>
+            <div class="form-group required">
+              <label for="input-telephone" class="control-label">Telephone</label>
+              <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="mobile"
+                     formControlName="mobile" required>
+            </div>
 
-              <div class="buttons clearfix">
-                <div class="pull-right">
-                  <input type="submit" class="btn btn-md btn-primary" value="Save Changes">
-                </div>
-              </div>
-
-            </fieldset>
-            <br>
-          </div>
-          <div class="col-sm-6">
-            <fieldset>
-              <legend>Change Password</legend>
-              <div class="form-group required">
-                <label for="input-password" class="control-label">Old Password</label>
-                <input type="password" class="form-control"  placeholder="Old Password" value="" name="old-password">
-              </div>
-              <div class="form-group required">
-                <label for="input-password" class="control-label">New Password</label>
-                <input type="password" class="form-control"  placeholder="New Password" value="" name="new-password">
-              </div>
-              <div class="form-group required">
-                <label for="input-confirm" class="control-label">New Password Confirm</label>
-                <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value="" name="new-confirm">
-              </div>
-            </fieldset>
 
             <div class="buttons clearfix">
               <div class="pull-right">
-                <input type="submit" class="btn btn-md btn-success" value="Change Password">
-
+                <input class="btn btn-md btn-primary" value="Save Changes" (click)="updateUser()">
               </div>
             </div>
 
+          </fieldset>
+
+        </form>
+
+      </div>
+      <div class="col-sm-6">
+        <form [formGroup]="passwordForm">
+          <fieldset>
+            <legend>Change Password</legend>
+            <div class="form-group required">
+              <label  class="control-label">Old Password</label>
+              <input type="password" class="form-control" placeholder="Old Password" value="" name="old-password">
+            </div>
+            <div class="form-group required">
+              <label  class="control-label">New Password</label>
+              <input type="password"  class="form-control" placeholder="New Password" value="" name="new-password">
+            </div>
+            <div class="form-group required">
+              <label for="input-confirm" class="control-label">New Password Confirm</label>
+              <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value=""
+                     name="new-confirm">
+            </div>
+          </fieldset>
+
+          <div class="buttons clearfix">
+            <div class="pull-right">
+              <input type="submit" class="btn btn-md btn-success" value="Change Password">
+
+            </div>
           </div>
-        </div>
-
-
-
-
-
-
-      </form>
+        </form>
+      </div>
     </div>
-    <!--Middle Part End-->
-    <!--Right Part Start -->
-    <app-account-sidebar></app-account-sidebar>
-    <!--Right Part End -->
+
+
   </div>
- <br/>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+  <app-account-sidebar></app-account-sidebar>
+  <!--Right Part End -->
+</div>
+<br/>

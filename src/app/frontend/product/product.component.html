@@ -25,7 +25,8 @@
                 </ul>
               </div>
               <div class="large-image  vertical">
-                <img itemprop="image" class="product-image-zoom" [src]="product.images[0]" [title]="product.name" alt=""/>
+                <img itemprop="image" class="product-image-zoom" [src]="product.images[0]" [title]="product.name"
+                     alt=""/>
               </div>
             </div>
 
@@ -43,33 +44,41 @@
 
               <div class="product-label form-group">
                 <div class="product_page_price price">
-                  <span class="price-new" itemprop="price">$114.00</span>
-                  <span class="price-old">$122.00</span>
+                  <span class="price-new" itemprop="price">${{cartItem.price|number:'1.2-2'}}</span>
+                  <span class="price-old">${{product.basePrice|number:'1.2-2'}}</span>
                 </div>
               </div>
-
-              <div id="product">
-                <h4>Available Options</h4>
-
-                <div class="form-group box-info-product">
-                  <div class="option quantity">
-                    <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
-                      <label>Qty</label>
-                      <input class="form-control" type="text" name="quantity"
-                             value="1">
-                      <input type="hidden" name="product_id" value="50">
-                      <span class="input-group-addon product_quantity_down">−</span>
-                      <span class="input-group-addon product_quantity_up">+</span>
+              <form [formGroup]="form">
+                <div id="product">
+                  <h4>Available Options</h4>
+                  <ng-container formArrayName="attributes">
+                    <div class="form-group" *ngFor="let attr of product.attributes;let i = index"
+                         [formGroupName]="i.toString()">
+                      <label>{{attr.name}}</label>
+                      <select name="option" class="form-control" formControlName="option">
+                        <option [ngValue]="option" *ngFor="let option of attr.options">
+                          {{option.name}}
+                          <ng-container *ngIf="option.price >0">+ ${{option.price|number:'1.2-2'}}</ng-container>
+                        </option>
+                      </select>
+                    </div>
+                  </ng-container>
+                  <div class="form-group box-info-product">
+                    <div class="option quantity">
+                      <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
+                        <label>Qty</label>
+                        <input class="form-control" type="text" name="quantity" value="1" formControlName="quantity"/>
+                        <span class="input-group-addon product_quantity_down" (click)="dcrQty()">−</span>
+                        <span class="input-group-addon product_quantity_up" (click)="inrQty()">+</span>
+                      </div>
+                    </div>
+                    <div class="cart">
+                      <input type="button" id="button-cart" class="btn btn-mega btn-lg" (click)="addToCart()"
+                             value="Add to cart"/>
                     </div>
                   </div>
-                  <div class="cart">
-                    <input type="button" data-toggle="tooltip" title="" value="Add to Cart"
-                           data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg"
-                           onclick="cart.add('42', '1');" data-original-title="Add to Cart">
-                  </div>
                 </div>
-
-              </div>
+              </form>
               <!-- end box info product -->
 
             </div>
