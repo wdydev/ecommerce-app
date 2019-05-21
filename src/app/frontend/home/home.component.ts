@@ -7,7 +7,34 @@ import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-frontend',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styles: [
+      `
+      .item .inner {
+        display: block;
+        width: inherit;
+        height: 250px;
+        border: 1px solid #ddd;
+        margin: 5px;
+        overflow: hidden;
+      }
+
+      .item .inner .image {
+        width: inherit;
+        height: 250px;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .item .inner .image img {
+        max-height: 230px;
+      }
+
+      .deals-layout1 .so-deal .extraslider-inner .item .caption h4 {
+        margin-top: 15px;
+      }
+    `
+  ]
 })
 
 export class HomeComponent implements OnInit {
