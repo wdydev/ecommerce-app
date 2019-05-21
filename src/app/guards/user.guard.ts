@@ -2,10 +2,11 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTre
 import {ApiService} from '../services/api.service';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class UserGuard implements CanActivate {
-  constructor(private api: ApiService, private router: Router) {
+  constructor(private api: ApiService, private router: Router, private userService: UserService) {
 
   }
 
@@ -27,6 +28,7 @@ export class UserGuard implements CanActivate {
           this.router.navigate(['login']);
           return false;
         }
+        this.userService.user = user;
         return true;
       }).catch(() => {
         this.router.navigate(['login']);
