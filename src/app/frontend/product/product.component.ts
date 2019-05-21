@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   private product: ProductI;
   private form: FormGroup;
   private cartItem: CartItem;
+  private activeImage: string;
 
   constructor(private route: ActivatedRoute, private service: ProductService) {
     this.route.params.subscribe(params => {
@@ -52,6 +53,7 @@ export class ProductComponent implements OnInit {
     this.form.valueChanges.subscribe(value => {
       this.updatePrice(value);
     });
+    this.activeImage = this.product.images && this.product.images.length > 0 ? this.product.images[0] : ''
   }
 
   private updatePrice(value: CartItem) {
