@@ -2,8 +2,10 @@
 <!-- Main Container  -->
 <div class="main-container container">
   <ul class="breadcrumb">
-    <li><a href="#"><i class="fa fa-home"></i></a></li>
-    <li><a href="#">Checkout</a></li>
+    <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+
+    <li><a  [routerLink]="['', 'cart']"> Cart </a></li>
+    <li><a  [routerLink]="['', 'checkout']"> Checkout </a></li>
 
   </ul>
 

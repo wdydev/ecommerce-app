@@ -38,6 +38,7 @@ import {CheckoutService} from './checkout/checkout.service';
 import {OrderHistoryService} from './order-history/order-history.service';
 import {NgxStripeModule} from 'ngx-stripe';
 import {OrderInformationService} from './order-information/order-information.service';
+import {ConfirmationService} from './confirmation/confirmation.service';
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import {OrderInformationService} from './order-information/order-information.ser
     FaqComponent,
     AccountSidebarComponent,
     AddCardComponent,
+
   ],
   providers: [
     AddressService,
@@ -82,7 +84,7 @@ import {OrderInformationService} from './order-information/order-information.ser
     AddCardService,
     CheckoutService,
     OrderHistoryService,
-    OrderInformationService
+    OrderInformationService,
   ]
 })
 
