@@ -55,11 +55,6 @@ export const routes: Routes = [
     component: CartComponent
   },
   {
-    path: 'checkout',
-    canActivate: [UserGuard],
-    component: CheckoutComponent
-  },
-  {
     path: 'register',
     component: RegisterComponent,
     canActivate: [UserNotAuth]
@@ -85,10 +80,17 @@ export const routes: Routes = [
     path: 'about-us', component: AboutUsComponent
   },
   {
-    path: 'confirmation', component: ConfirmationComponent
+    path: 'faq', component: FaqComponent
   },
   {
-    path: 'faq', component: FaqComponent
+    path: 'confirmation/:id',
+    canActivate: [UserGuard],
+    component: ConfirmationComponent
+  },
+  {
+    path: 'checkout',
+    canActivate: [UserGuard],
+    component: CheckoutComponent
   }
 
 ];

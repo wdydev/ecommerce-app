@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ModalService} from '../../services/modal.service';
 import {PaymentsService} from './payments.service';
 import {Payment} from '../../entity/payment';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-paymentmethods',
@@ -16,9 +17,13 @@ export class PayementMethodsComponent implements OnInit {
   private payments: Array<Payment>;
   private addACard: boolean;
 
-  constructor(private  modal: ModalService, private  service: PaymentsService) {
+  constructor(private  modal: ModalService, private  service: PaymentsService, private userService: UserService) {
     this.payments = [];
     this.addACard = false;
+
+    userService.user$.subscribe(user => {
+      this.payments = user.payments || [];
+    });
   }
 
   public addCard() {

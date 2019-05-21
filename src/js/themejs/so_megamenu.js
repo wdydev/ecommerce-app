@@ -223,7 +223,7 @@ function hoverMegaMenu() {
       }
     } else {
       var $whatever = $(this).children(".sub-menu");
-      if (!$whatever) {
+      if (!$whatever || $whatever.length === 0) {
         return;
       }
       var ending_right = ($(window).width() - ($whatever.offset().left + $whatever.outerWidth()));
