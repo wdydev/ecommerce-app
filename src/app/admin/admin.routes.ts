@@ -6,7 +6,7 @@ import {OrdersComponent} from './orders/orders.component';
 import {CouponsComponent} from './coupons/coupons.component';
 import {UsersComponent} from './user/users.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
-import {OrderHistoryComponent} from './order-history/order-history.component';
+import {OrderDetailComponent} from './order-detail/order-detail.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +30,7 @@ export const routes: Routes = [
       },
       {
         path: ':id',
-        component: OrderHistoryComponent
+        component: OrderDetailComponent
       }
     ]
 

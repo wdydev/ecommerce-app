@@ -1,14 +1,48 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Account</a></li>
-  <li><a href="#">My Account</a></li>
+  <li><a href="#">Orders</a></li>
+
 </ul>
+
 
 <div class="row">
   <!--Middle Part Start-->
   <div class="col-sm-9" id="content">
-    <h2 class="title">Admin dashboard</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>User</th>
+          <th>Order Date</th>
+          <th>Total</th>
+          <th class="text-left"><i class="fa fa-bolt"></i></th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let order of orders">
+          <th scope="row">1</th>
+          <td>{{order._id}}</td>
+          <td>{{order.user.name}}</td>
+          <td> {{order.orderDate}}</td>
+          <td>{{order.total}}</td>
+
+          <td><span class="input-group-btn">
+                 <a [routerLink]="['/', 'admin', 'orders', order._id]" data-toggle="tooltip" title="View"
+                    class="btn btn-success">   <i class="fa fa-eye">  </i> </a>
+              </span></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
   </div>
+
+
   <app-admin-sidebar></app-admin-sidebar>
 </div>
 <br/>
