@@ -12,13 +12,13 @@ export class MyAccountServices {
     return res.user;
   }
 
-  public async changeUser(data) {
-    const res = await this.api.patch('/users/1', data).toPromise();
+  public async changeUser(id , data) {
+    const res = await this.api.patch(`/users/${id}`, data).toPromise();
     return res.user;
   }
 
-  public async changePassword(data) {
-    const res = await this.api.patch('/users/1/password', data).toPromise();
+  public async changePassword(id , data) {
+    const res = await this.api.patch(`/users/${id}/password`, data).toPromise();
     return res.user;
   }
 
