@@ -10,9 +10,9 @@ import {ObjectID} from '../../entity/mongo.id';
   templateUrl: './category.component.html'
 })
 export class CategoryComponent implements OnInit {
-  private category: CategoryI;
-  private form: FormGroup;
-  private categories: Array<CategoryI>;
+  public category: CategoryI;
+  public form: FormGroup;
+  public categories: Array<CategoryI>;
 
   constructor(private modal: ModalService, private service: CategoryService) {
     this.categories = [];

@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 })
 
 export class AccountSidebarComponent {
-  private links: {
+  public links: {
 
     myAccount: Array<string>
     addressBooks: Array<string>

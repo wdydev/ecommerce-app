@@ -14,12 +14,12 @@ import {Router} from '@angular/router';
   templateUrl: './checkout.component.html'
 })
 export class CheckoutComponent implements OnInit {
-  private cart: Array<CartItem>;
-  private user: UserI;
-  private addACard: boolean;
-  private checkoutForm: FormGroup;
-  private order: Order;
-  private couponDiscount: number;
+  public cart: Array<CartItem>;
+  public user: UserI;
+  public addACard: boolean;
+  public checkoutForm: FormGroup;
+  public order: Order;
+  public couponDiscount: number;
 
   constructor(private service: CartService,
               private userService: UserService,

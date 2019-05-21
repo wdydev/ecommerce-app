@@ -9,8 +9,8 @@ import {Order} from '../../entity/order';
   templateUrl: './order-information.component.html'
 })
 export class OrderInformationComponent {
-  private id: string;
-  private order: Order;
+  public id: string;
+  public order: Order;
 
   constructor(private modal: ModalService, private route: ActivatedRoute, private service: OrderInformationService) {
     this.route.params.subscribe(param => {

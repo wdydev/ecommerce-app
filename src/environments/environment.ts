@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   apiEndpoint: 'http://localhost:8000/api/v1/',
   awsPoolId: 'us-east-2:c7b15228-9bf0-472f-913c-0978744985c5',
   awsRegion: 'us-east-2',

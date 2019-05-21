@@ -11,11 +11,11 @@ import {ObjectID} from '../../entity/mongo.id';
   templateUrl: './product.component.html'
 })
 export class ProductComponent implements OnInit {
-  private slug: string;
-  private product: ProductI;
-  private form: FormGroup;
-  private cartItem: CartItem;
-  private activeImage: string;
+  public slug: string;
+  public product: ProductI;
+  public form: FormGroup;
+  public cartItem: CartItem;
+  public activeImage: string;
 
   constructor(private route: ActivatedRoute, private service: ProductService) {
     this.route.params.subscribe(params => {
