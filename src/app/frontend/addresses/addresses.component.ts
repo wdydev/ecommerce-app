@@ -21,19 +21,19 @@ export class AddressesComponent implements OnInit {
   public async addressForm(template: TemplateRef<any>, address: any = {}) {
     this.address = address;
     this.form = new FormGroup({
-      address: new FormControl(),
-      address2: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      country: new FormControl(),
-      zipcode: new FormControl(),
+      address: new FormControl(this.address.address),
+      address2: new FormControl(this.address.address2),
+      city: new FormControl(this.address.city),
+      state: new FormControl(this.address.state),
+      country: new FormControl(this.address.country),
+      zipcode: new FormControl(this.address.zipcode),
     });
 
     await this.modal.open(template);
   }
 
   public async saveAddress() {
-    const address = await this.service.saveAddress(this.form.value);
+    const address = await this.service.saveAddress({_id: this.address._id, ...this.form.value});
 
     // refresh our list
     if (this.address._id) {
@@ -48,8 +48,6 @@ export class AddressesComponent implements OnInit {
     }
 
     this.addresses.push(address);
-
-    this.loadAddresses();
 
     this.cancel();
   }

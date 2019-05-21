@@ -19,6 +19,12 @@ export class AddressService {
   }
 
   public async saveAddress(data) {
+    if (data._id) {
+      // tslint:disable-next-line:no-shadowed-variable
+      const res = await this.api.patch(`/users/${this.user._id}/addresses/${data._id}`, data).toPromise();
+      return res.address;
+    }
+
     const res = await this.api.post(`/users/${this.user._id}/addresses`, data).toPromise();
     return res.address;
   }

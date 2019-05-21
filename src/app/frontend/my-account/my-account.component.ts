@@ -2,9 +2,10 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ModalService} from '../../services/modal.service';
 
-import {User} from '../../entity/user';
+import {User, UserI} from '../../entity/user';
 import {Router} from '@angular/router';
 import {MyAccountServices} from './my-account.services';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
@@ -16,13 +17,19 @@ export class MyAccountComponent implements OnInit {
   private userForm: FormGroup;
   private passwordForm: FormGroup;
 
-  private user: User;
+  private user: UserI;
 
-  constructor(private  modal: ModalService, private service: MyAccountServices, private router: Router) {
+  constructor(
+    private  modal: ModalService,
+    private service: MyAccountServices,
+    private router: Router,
+    private userService: UserService) {
+
+    this.user = userService.user;
   }
 
   public async getUser() {
-    this.user = await this.service.getUser('5ce301b877e20f4aa49de782');
+    this.user = await this.service.getUser(this.user._id);
     this.userForm = new FormGroup({
       name: new FormControl(this.user.name),
       email: new FormControl(this.user.email),
@@ -36,15 +43,15 @@ export class MyAccountComponent implements OnInit {
   }
 
   public async updateUser() {
-    const user = await this.service.changeUser('5ce301b877e20f4aa49de782', this.userForm.value);
-    // localStorage.setItem('token', '{token returned from server}');
-    // this.router.navigate(['my-account']);
+    const user = await this.service.changeUser(this.user._id, this.userForm.value);
+    if (!user) {
+      return;
+    }
+    this.userService.user = user;
   }
 
   public async changePassword() {
-    const user = await this.service.changePassword('5ce301b877e20f4aa49de782', this.passwordForm.value);
-    // localStorage.setItem('token', '{token returned from server}');
-    // this.router.navigate(['my-account']);
+    const user = await this.service.changePassword(this.user._id, this.passwordForm.value);
   }
 
   public ngOnInit(): void {
