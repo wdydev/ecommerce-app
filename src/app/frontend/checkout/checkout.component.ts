@@ -56,6 +56,8 @@ export class CheckoutComponent implements OnInit {
         email: this.user.email,
         mobile: this.user.mobile,
       },
+      orderDate: new Date(),
+      status: 1,
       products: this.cart,
       paymentType: 'stripe',
       shippingCost: new CartCalc().transform(this.cart, 'shipping'),

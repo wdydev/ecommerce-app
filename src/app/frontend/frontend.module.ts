@@ -27,6 +27,7 @@ import {RegisterService} from './register/register.service';
 import {MyAccountServices} from './my-account/my-account.services';
 import {HomeService} from './home/home.service';
 import {ProductService} from './product/product.service';
+import {CategoryService} from './category/category.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {GuardsModule} from '../guards/guards.module';
 import {LoginService} from './login/login.service';
@@ -65,6 +66,7 @@ import {CheckoutService} from './checkout/checkout.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+    AccountSidebarComponent,
     AddCardComponent,
   ],
   providers: [
@@ -73,6 +75,8 @@ import {CheckoutService} from './checkout/checkout.service';
     MyAccountServices,
     HomeService,
     ProductService,
+
+    CategoryService,
     PaymentsService,
     LoginService,
     AddCardService,

@@ -20,6 +20,9 @@ import {ProductService} from './products/product.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {PipesModule} from '../pipes/pipes.module';
 import {UserDeatilService} from './user-detail/user-detail.service';
+import {OrdersService} from './orders/orders.service';
+import {OrderDetailComponent} from './order-detail/order-detail.component';
+import {OrderDetailService} from './order-detail/order-detail.service';
 
 
 @NgModule({
@@ -41,13 +44,16 @@ import {UserDeatilService} from './user-detail/user-detail.service';
     AwsUploadComponent,
     UsersComponent,
     UserDetailComponent,
+    OrderDetailComponent,
   ],
   providers: [
     CategoryService,
     CouponService,
     UsersService,
     ProductService,
-    UserDeatilService
+    UserDeatilService,
+    OrdersService,
+    OrderDetailService,
   ],
 })
 export class AdminModule {

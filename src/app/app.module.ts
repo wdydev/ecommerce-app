@@ -10,13 +10,14 @@ import {ModalService} from './services/modal.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CategoryService as AdminCategoryService} from './admin/category/category.service';
-import {CartCalc} from './pipes/cart.calc';
 import {PipesModule} from './pipes/pipes.module';
+
 import {RequestInterceptor} from './services/request.interceptor';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
