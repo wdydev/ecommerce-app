@@ -63,10 +63,10 @@
                   <div class="panel-body row">
                     <div class="col-sm-6 ">
                       <div class="input-group">
-                        <input type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here"
-                               value="" name="coupon">
+                        <input ng-model="discount" type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here"
+                               value="" name="coupon" >
                         <span class="input-group-btn">
-							  <input type="button" class="btn btn-primary" data-loading-text="Loading..." id="button-coupon"
+							  <input type="button" class="btn btn-primary" data-loading-text="Loading..." id="button-coupon" ng-click="checkCoupon(discount)"
                        value="Apply Coupon">
 							  </span></div>
                     </div>
@@ -130,10 +130,17 @@
                           <td class="text-right">${{cart|cartCalc:'sub-total'|number:'1.2-2'}}</td>
                         </tr>
                         <tr>
+                          <td colspan="3"></td>
+                          <td class="text-right"><b>Flat Shipping Rate</b>
+                          </td>
+                          <td class="text-right">$7.99</td>
+                          <td></td>
+                        </tr>
+                        <tr>
                           <td class="text-right" colspan="4">
                             <strong>Coupon Discount:</strong>
                           </td>
-                          <td class="text-right">$0.00</td>
+                          <td class="text-right">${{couponDiscount}}</td>
                         </tr>
 
                         <tr>
