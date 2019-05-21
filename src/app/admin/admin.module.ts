@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Pipe} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {routes} from './admin.routes';
@@ -18,7 +18,7 @@ import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UsersService} from './user/users.service';
 import {ProductService} from './products/product.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
-import {StatusPipe} from '../pipes/status.pipe';
+import {PipesModule} from '../pipes/pipes.module';
 import {UserDeatilService} from './user-detail/user-detail.service';
 
 
@@ -28,7 +28,8 @@ import {UserDeatilService} from './user-detail/user-detail.service';
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     TooltipModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    PipesModule
   ],
   declarations: [
     SidebarComponent,
@@ -40,7 +41,6 @@ import {UserDeatilService} from './user-detail/user-detail.service';
     AwsUploadComponent,
     UsersComponent,
     UserDetailComponent,
-    StatusPipe
   ],
   providers: [
     CategoryService,
