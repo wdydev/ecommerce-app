@@ -35,7 +35,7 @@ import {AddCardComponent} from './add-card/add.card.component';
 import {NgxStripeModule} from 'ngx-stripe';
 import {AddCardService} from './add-card/add.card.service';
 import {CheckoutService} from './checkout/checkout.service';
- 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -65,6 +65,7 @@ import {CheckoutService} from './checkout/checkout.service';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
+    AddCardComponent,
   ],
   providers: [
     AddressService,
@@ -72,7 +73,7 @@ import {CheckoutService} from './checkout/checkout.service';
     MyAccountServices,
     HomeService,
     ProductService,
-    PaymentsService
+    PaymentsService,
     LoginService,
     AddCardService,
     CheckoutService,
