@@ -1,6 +1,7 @@
 <ul class="breadcrumb">
   <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Order History</a></li>
+  <li><a href="my-account">Account</a></li>
+  <li><a>Order History</a></li>
 </ul>
 
 <div class="row">
@@ -30,9 +31,11 @@
           <td class="text-center">${{order.total|number:'1.2-2'}}</td>
 
           <td class="text-center">
-            <button class="btn btn-info">
-              <i class="fa fa-pencil"></i>
-            </button>
+
+              <span class="input-group-btn">
+                 <a [routerLink]="['', 'my-account', 'orders', order._id]" data-toggle="tooltip" title="View"
+                    class="btn btn-success">   <i class="fa fa-eye">  </i> </a>
+              </span>
 
           </td>
         </tr>
