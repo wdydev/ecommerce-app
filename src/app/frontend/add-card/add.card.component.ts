@@ -5,7 +5,7 @@ import {
   Element as StripeElement,
   ElementsOptions
 } from 'ngx-stripe';
-import {AfterViewChecked, Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {ModalService} from '../../services/modal.service';
 import {AddCardService} from './add.card.service';
 
@@ -62,7 +62,12 @@ export class AddCardComponent implements OnInit {
         this.onComplete.emit(res);
       });
   }
- 
+
+  public close() {
+    this.modal.close();
+    this.onComplete.emit(false);
+  }
+
   public ngOnInit(): void {
     this.addCreditCard();
   }
