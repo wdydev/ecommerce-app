@@ -62,10 +62,7 @@ export class AddCardComponent implements OnInit {
         this.onComplete.emit(res);
       });
   }
-
-  public async canel() {
-    this.modal.close();
-  }
+ 
   public ngOnInit(): void {
     this.addCreditCard();
   }
