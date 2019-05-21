@@ -8,12 +8,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ModalService} from './services/modal.service';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CategoryService as AdminCategoryService} from './admin/category/category.service';
-import {CartCalc} from './pipes/cart.calc';
 import {PipesModule} from './pipes/pipes.module';
-import {OrdersService} from './admin/orders/orders.service';
-import {OrdersComponent} from './admin/orders/orders.component';
+
+import {RequestInterceptor} from './services/request.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import {OrdersComponent} from './admin/orders/orders.component';
   ],
   providers: [
     ModalService,
-    AdminCategoryService
+    AdminCategoryService,
+    {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
