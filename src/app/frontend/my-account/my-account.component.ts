@@ -30,19 +30,19 @@ export class MyAccountComponent implements OnInit {
     });
 
     this.passwordForm = new FormGroup({
-      oldpassword: new FormControl(),
-      newpassword: new FormControl(),
+      oldPassword: new FormControl(),
+      newPassword: new FormControl('', Validators.required),
     });
   }
 
   public async updateUser() {
-    const user = await this.service.changeUser(this.userForm.value);
+    const user = await this.service.changeUser('5ce301b877e20f4aa49de782', this.userForm.value);
     // localStorage.setItem('token', '{token returned from server}');
     // this.router.navigate(['my-account']);
   }
 
-  public async saveUser() {
-    const user = await this.service.changePassword(this.passwordForm.value);
+  public async changePassword() {
+    const user = await this.service.changePassword('5ce301b877e20f4aa49de782', this.passwordForm.value);
     // localStorage.setItem('token', '{token returned from server}');
     // this.router.navigate(['my-account']);
   }
