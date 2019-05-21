@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {UserI} from '../../entity/user';
+import {UserService} from '../../services/user.service';
 
 @Injectable()
 export class LoginService {
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private service: UserService) {
 
   }
 
@@ -14,9 +15,9 @@ export class LoginService {
       throw new Error('User not found.');
     }
 
-    localStorage.setItem('user', JSON.stringify(user.user));
-    localStorage.setItem('token', user.user.token);
-    localStorage.setItem('userType', 'user');
+    this.service.user = user.user;
+    this.service.token = user.user.token;
+    this.service.type = 'user';
 
     return true;
   }
