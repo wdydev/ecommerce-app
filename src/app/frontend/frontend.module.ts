@@ -67,8 +67,9 @@ import {NgxStripeModule} from 'ngx-stripe';
     ConfirmationComponent,
     FaqComponent,
     AccountSidebarComponent,
-     AddCardComponent,
+    AddCardComponent,
     OrderHistoryComponent,
+    AccountSidebarComponent,
   ],
   providers: [
     AddressService,
