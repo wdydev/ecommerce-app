@@ -100,10 +100,15 @@
         <div class="middle-right col-lg-4 col-md-3 col-sm-6 col-xs-8">
           <div class="signin-w  hidden-sm hidden-xs">
             <ul class="signin-link blank">
-              <li class="log login">
+              <li class="log login" *ngIf="!user || !user._id">
                 <i class="fa fa-lock" style="margin-right: 10px;"></i>
                 <a class="link-lg" [routerLink]="['login']">Login </a> or
                 <a [routerLink]="['register']">Register</a>
+              </li>
+              <li class="log login" *ngIf="user && user._id">
+                <i class="fa fa-user" style="margin-right: 10px;"></i>
+                <a class="link-lg" [routerLink]="['my-account']">{{user.name}} </a> or
+                <a (click)="logout()">Logout</a>
               </li>
             </ul>
           </div>
