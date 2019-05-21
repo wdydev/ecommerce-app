@@ -22,7 +22,7 @@ import {UserNotAuth} from '../guards/user.not.auth';
 export const routes: Routes = [
   {
     path: 'my-account',
-    canActivate: [],
+    canActivate: [UserGuard],
     children: [
       {
         path: '',
@@ -35,16 +35,16 @@ export const routes: Routes = [
       {
         path: 'payment-methods',
         component: PayementMethodsComponent
+      },
+      {
+        path: 'orders',
+        component: OrderHistoryComponent
+      },
+      {
+        path: 'orders/:id',
+        component: OrderInformationComponent
       }
     ]
-  },
-  {
-    path: 'orders',
-    component: OrderHistoryComponent
-  },
-  {
-    path: 'orders/:id',
-    component: OrderInformationComponent
   },
   {
     path: '',

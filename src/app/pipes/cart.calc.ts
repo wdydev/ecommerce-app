@@ -18,10 +18,17 @@ export class CartCalc implements PipeTransform {
     if (type === 'tax') {
       return this.tax(value);
     }
+    if (type === 'shipping') {
+      return this.shipping();
+    }
   }
 
   public total(items: Array<CartItem>): number {
-    return items.reduce((sum: number, item: CartItem) => sum + item.price, 0);
+    return items.reduce((sum: number, item: CartItem) => sum + item.price, 0) + 7.99;
+  }
+
+  public shipping(): number {
+    return 7.99;
   }
 
   public subTotal(items: Array<CartItem>): number {
