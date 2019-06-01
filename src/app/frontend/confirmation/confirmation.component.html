@@ -1,0 +1,23 @@
+<ul class="breadcrumb">
+  <li><a href="#"><i class="fa fa-home"></i></a></li>
+  <li><a href="#">Checkout</a></li>
+  <li><a routerLink="['','checkout']">Confirmation</a></li>
+</ul>
+
+<div class="row" *ngIf="user && user._id">
+  <!--Middle Part Start-->
+  <div class="col-sm-9" id="content">
+    <p class="lead"><strong style="color: green">  Congratulations: {{user.name}}!</strong> -</p>
+
+    <p class="lead"><strong>  Your order will be shipped soon!</strong> </p>
+
+    <p class="lead">
+      Please <a [routerLink]="['','my-account','orders',id]"><strong>click here</strong></a> to track your order.
+    </p>
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+  <app-account-sidebar></app-account-sidebar>
+  <!--Right Part End -->
+</div>
+<br/>

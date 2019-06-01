@@ -1,0 +1,16 @@
+<ng-template #add_card let-c="close">
+  <div class="modal-header">
+    <h3 class="title">Add credit card</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="card-element" style="min-height: 50px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="saveCard()">Save</button>
+    <button type="button" class="btn btn-primary" (click)="close()">Cancel</button>
+  </div>
+</ng-template>

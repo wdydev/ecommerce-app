@@ -1,0 +1,84 @@
+<ul class="breadcrumb">
+  <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+  <li><a [routerLink]="['','my-account']">Account</a></li>
+  <li><a>Personal Information</a></li>
+</ul>
+
+<div class="row" *ngIf="user && user._id">
+  <!--Middle Part Start-->
+  <div class="col-sm-9" id="content">
+    <h2 class="title">My Account</h2>
+    <p class="lead">Hello, <strong>{{user.name}}!</strong> - Welcome to your account.</p>
+
+    <div class="row">
+      <div class="col-sm-6">
+
+        <form [formGroup]="userForm">
+          <fieldset id="personal-details">
+            <legend>Personal Details</legend>
+            <div class="form-group required">
+              <label   class="control-label">Full Name</label>
+              <input type="text" class="form-control" id="input-firstname" placeholder="Full Name" name="name"
+                     formControlName="name">
+            </div>
+
+            <div class="form-group required">
+              <label  class="control-label">E-Mail</label>
+              <input type="email" class="form-control" id="input-email" placeholder="E-Mail" name="email"
+                     readonly formControlName="email">
+            </div>
+            <div class="form-group required">
+              <label for="input-telephone" class="control-label">Telephone</label>
+              <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" name="mobile"
+                     formControlName="mobile" required>
+            </div>
+
+
+            <div class="buttons clearfix">
+              <div class="pull-right">
+                <input class="btn btn-md btn-primary" value="Save Changes" (click)="updateUser()">
+              </div>
+            </div>
+
+          </fieldset>
+
+        </form>
+
+      </div>
+      <div class="col-sm-6">
+        <form [formGroup]="passwordForm">
+          <fieldset>
+            <legend>Change Password</legend>
+            <div class="form-group required">
+              <label  class="control-label">Old Password</label>
+              <input type="password" class="form-control" placeholder="Old Password" value="" name="old-password" formControlName="oldPassword" >
+            </div>
+            <div class="form-group required">
+              <label  class="control-label">New Password</label>
+              <input type="password"  class="form-control" placeholder="New Password" value="" name="new-password" formControlName="newPassword">
+            </div>
+            <div class="form-group required">
+              <label for="input-confirm" class="control-label">New Password Confirm</label>
+              <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value=""
+                     name="new-confirm" formControlName="confirmPassword">
+            </div>
+          </fieldset>
+
+          <div class="buttons clearfix">
+            <div class="pull-right">
+              <input  class="btn btn-md btn-success" value="Change Password" (click)="changePassword()">
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+  <app-account-sidebar></app-account-sidebar>
+  <!--Right Part End -->
+</div>
+<br/>

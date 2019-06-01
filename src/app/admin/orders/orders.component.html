@@ -1,0 +1,58 @@
+<ul class="breadcrumb">
+  <li><a href="#"><i class="fa fa-home"></i></a></li>
+  <li><a  [routerLink]="['', 'admin']">Admin</a></li>
+  <li><a  [routerLink]="['', 'admin', 'orders']">Orders</a></li>
+</ul>
+
+
+<div class="row">
+  <!--Middle Part Start-->
+  <div class="col-sm-9" id="content">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>User</th>
+          <th>Order Date</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th class="text-left"><i class="fa fa-bolt"></i></th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let order of orders;let i = index;">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{order._id}}</td>
+          <td>{{order.user.name}}</td>
+          <td> {{order.orderDate|date:'MM-dd-yyyy'}}</td>
+          <td>${{order.total|number:'1.2-2'}}</td>
+          <td>
+            {{order.status|orderStatus}}
+            <select class="form-control" (change)="updateStatus($event,order)">
+              <option value="1">Order received</option>
+              <option value="2">Order in progress</option>
+              <option value="3">Order shipped</option>
+              <option value="4">Order complete</option>
+              <option value="5">Order cancelled</option>
+            </select>
+          </td>
+          <td><span class="input-group-btn">
+                 <a [routerLink]="['', 'admin', 'orders', order._id]" data-toggle="tooltip" title="View"
+                    class="btn btn-success">   <i class="fa fa-eye">  </i> </a>
+              </span></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <app-admin-sidebar></app-admin-sidebar>
+</div>
+<br/>

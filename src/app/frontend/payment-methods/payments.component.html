@@ -1,0 +1,62 @@
+
+<ul class="breadcrumb">
+  <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+  <li><a [routerLink]="['','my-account']">Account</a></li>
+  <li><a>Payment Methods</a></li>
+</ul>
+
+<div class="row">
+  <!--Middle Part Start-->
+  <div id="content" class="col-sm-9">
+
+    <table  class="table">
+      <tr>
+        <td class="text-left">
+          <h2 class="title">Payment Methods</h2>
+        </td>
+
+        <td class="text-right">
+          <ng-container *ngIf="addACard">
+            <app-add-card (oncomplete)="cardAdded()"></app-add-card>
+          </ng-container>
+          <button class="btn btn-success" (click)="addCard()">Add a card</button>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <td class="text-center">Card No</td>
+          <td class="text-center">Card Type</td>
+          <td class="text-center">Expire on</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let card of payments">
+
+          <td class="text-center">{{card.card.last4}}</td>
+          <td class="text-center">{{card.card.brand}}</td>
+          <td class="text-center">{{card.card.exp_month}} / {{card.card.exp_year}}</td>
+          <td class="text-center">
+
+            <button class="btn btn-danger" (click)="deletePaymentMethod(card)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+  <app-account-sidebar></app-account-sidebar>
+  <!--Right Part End -->
+</div>
+<br/>
+

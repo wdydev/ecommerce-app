@@ -1,0 +1,112 @@
+<!-- Main Container  -->
+<div class="main-container container" *ngIf="product && product._id">
+  <ul class="breadcrumb">
+    <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+    <li><a [routerLink]="['','category',product.category.slug]">{{product.category.name}}</a></li>
+    <li><a [routerLink]="['','product',product.slug]">{{product.name}}</a></li>
+  </ul>
+
+  <div class="row">
+
+    <!--Middle Part Start-->
+    <div id="content" class="col-md-9 col-sm-8">
+
+      <div class="product-view">
+        <div class="left-content-product">
+          <div class="row">
+            <div class="content-product-left col-md-6 col-sm-12 col-xs-12">
+              <div id="thumb-slider-vertical" class="thumb-vertical-outer">
+                <ul class="thumb-vertical">
+                  <li class="owl2-item" *ngFor="let image of product.images">
+                    <a data-index="0" class="img thumbnail" (click)="activeImage = image;">
+                      <img [src]="image" [alt]="product.name">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="large-image  vertical">
+                <img itemprop="image" class="product-image-zoom" [src]="activeImage" [title]="product.name"
+                     alt=""/>
+              </div>
+            </div>
+
+            <div class="content-product-right col-md-6 col-sm-12 col-xs-12">
+              <div class="title-product">
+                <h1>{{product.name}}</h1>
+              </div>
+              <!-- Review ---->
+              <div class="box-review form-group">
+                <a class="reviews_button" href=""
+                   onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a> |
+                <a class="write_review_button" href=""
+                   onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
+              </div>
+
+              <div class="product-label form-group">
+                <div class="product_page_price price">
+                  <span class="price-new" itemprop="price">${{cartItem.price|number:'1.2-2'}}</span>
+                  <span class="price-old">${{product.basePrice|number:'1.2-2'}}</span>
+                </div>
+              </div>
+              <form [formGroup]="form">
+                <div id="product">
+                  <h4>Available Options</h4>
+                  <ng-container formArrayName="attributes">
+                    <div class="form-group" *ngFor="let attr of product.attributes;let i = index"
+                         [formGroupName]="i.toString()">
+                      <label>{{attr.name}}</label>
+                      <select name="option" class="form-control" formControlName="option">
+                        <option [ngValue]="option" *ngFor="let option of attr.options">
+                          {{option.name}}
+                          <ng-container *ngIf="option.price >0">+ ${{option.price|number:'1.2-2'}}</ng-container>
+                        </option>
+                      </select>
+                    </div>
+                  </ng-container>
+                  <div class="form-group box-info-product">
+                    <div class="option quantity">
+                      <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
+                        <label>Qty</label>
+                        <input class="form-control" type="text" name="quantity" value="1" formControlName="quantity"/>
+                        <span class="input-group-addon product_quantity_down" (click)="dcrQty()">−</span>
+                        <span class="input-group-addon product_quantity_up" (click)="inrQty()">+</span>
+                      </div>
+                    </div>
+                    <div class="cart">
+                      <input type="button" id="button-cart" class="btn btn-mega btn-lg" (click)="addToCart()"
+                             value="Add to cart"/>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- end box info product -->
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Product Tabs -->
+      <div class="producttab ">
+        <div class="tabsslider horizontal-tabs  col-xs-12">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab-1">Description</a></li>
+          </ul>
+          <div class="tab-content col-xs-12">
+            <div id="tab-1" class="tab-pane fade active in">{{product.description}}</div>
+          </div>
+        </div>
+      </div>
+      <!-- //Product Tabs -->
+
+      <!-- end Related  Products-->
+
+    </div>
+    <!--Middle Part End-->
+  </div>
+
+</div>
+<!--<div></div>-->
+<!-- //Main Container -->

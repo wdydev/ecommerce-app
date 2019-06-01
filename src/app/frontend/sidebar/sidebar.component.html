@@ -1,0 +1,45 @@
+<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 main-left sidebar-offcanvas">
+  <div class="module col1 hidden-sm hidden-xs"></div>
+  <div class="module">
+    <div class="banners banners2">
+      <div class="banner">
+      </div>
+    </div>
+  </div>
+
+  <div class="module product-simple">
+    <h3 class="modtitle">
+      <span>Latest products</span>
+    </h3>
+    <div class="modcontent">
+      <div id="so_extra_slider_1" class="extraslider">
+        <div class="yt-content-slider extraslider-inner" data-rtl="yes" data-pagination="yes" data-autoplay="no"
+             data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1"
+             data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="no"
+             data-lazyload="yes" data-loop="no" data-buttonpage="top">
+          <div class="item" *ngFor="let prod of latest">
+            <div class="product-layout item-inner style1 ">
+              <div class="item-image">
+                <div class="item-img-info">
+                  <a [routerLink]="['product',prod.slug]" target="_self" [title]="prod.name">
+                    <img [src]="prod.images? prod.images[0]:'image/catalog/demo/product/80/1.jpg'" [alt]="prod.name">
+                  </a>
+                </div>
+              </div>
+              <div class="item-info">
+                <div class="item-title">
+                  <a [routerLink]="['product',prod.slug]" target="_self"
+                     [title]="prod.name">{{prod.name}}</a>
+                </div>
+                <div class="content_price price">
+                  <span class="price-new product-price">${{prod.basePrice|number:'1.2-2'}} </span>&nbsp;&nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,121 @@
+<ul class="breadcrumb">
+  <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+  <li><a [routerLink]="['','my-account']">Account</a></li>
+  <li><a [routerLink]="['','my-account','orders']">Orders</a></li>
+  <li><a>Order details</a></li>
+</ul>
+
+
+<div class="row" *ngIf="order && order._id">
+  <!--Middle Part Start-->
+  <div id="content" class="col-sm-9">
+    <h2 class="title">Order Information</h2>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <td colspan="2" class="text-left">Order Details</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td style="width: 50%;" class="text-left"> <b>Order ID:</b> {{order._id}}
+          <br>
+          <b>Date Added:</b> {{order.orderDate}}</td>
+        <td style="width: 50%;" class="text-left"> <b>Payment Method:</b> {{order.paymentType}}
+          <br>
+          <b>Shipping Method:</b> Flat Shipping Rate </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <td style="width: 50%; vertical-align: top;" class="text-left">Payment Information</td>
+        <td style="width: 50%; vertical-align: top;" class="text-left">Shipping Address</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-left">Brand: {{order.payment.card.brand}}
+          <br>Last Four Digit: {{order.payment.card.last4}}
+          <br>Expiration Date: {{order.payment.card.exp_month}}, {{order.payment.card.exp_year}}
+          <br>Funding Type: {{order.payment.card.funding}}
+          <br>Country : {{order.payment.card.country}}
+          </td>
+        <td class="text-left">{{order.user.name}}
+          <br>{{order.address.address}}
+          <br>{{order.address.address2}}
+          <br>{{order.address.city}}
+          <br>{{order.address.zipcode}}
+          <br>{{order.address.country}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <td class="text-left">Product Name</td>
+          <td class="text-left">Model</td>
+          <td class="text-right">Quantity</td>
+          <td class="text-right">Price</td>
+          <td class="text-right">Total</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of order.products">
+          <td class="text-left">{{item.name}} </td>
+          <td class="text-left">{{item.product}}</td>
+          <td class="text-right">{{item.quantity}}</td>
+          <td class="text-right">${{item.rate|number:'1.2-2'}}</td>
+          <td class="text-right">${{item.price|number:'1.2-2'}}</td>
+
+        </tr>
+
+        </tbody>
+        <tfoot>
+
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Sub-Total</b>
+          </td>
+          <td class="text-right">${{order.products|orderCalc:'sub-total'|number:'1.2-2'}}</td>
+
+
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Flat Shipping Rate</b>
+          </td>
+          <td class="text-right">$7.99</td>
+
+        </tr>
+
+
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right"><b>Total</b>
+          </td>
+          <td class="text-right">${{order.products|orderCalc:'total'|number:'1.2-2'}}</td>
+
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="buttons clearfix">
+      <div class="pull-right"><a class="btn btn-primary" [routerLink]="['/', 'my-account', 'orders']">Back</a>
+      </div>
+    </div>
+
+
+
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+
+    <app-account-sidebar></app-account-sidebar>
+  <!--Right Part End -->
+</div>
+<br/>

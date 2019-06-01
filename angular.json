@@ -20,12 +20,46 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/image"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/css/bootstrap/css/bootstrap.min.css",
+              "src/css/font-awesome/css/font-awesome.min.css",
+              "src/js/datetimepicker/bootstrap-datetimepicker.min.css",
+              "src/js/owl-carousel/owl.carousel.css",
+              "src/css/themecss/lib.css",
+              "src/js/jquery-ui/jquery-ui.min.css",
+              "src/js/minicolors/miniColors.css",
+              "src/css/themecss/so_searchpro.css",
+              "src/css/themecss/so_megamenu.css",
+              "src/css/themecss/so-categories.css",
+              "src/css/themecss/so-listing-tabs.css",
+              "src/css/themecss/so-newletter-popup.css",
+              "src/css/footer/footer1.css",
+              "src/css/header/header1.css",
+              "src/css/theme.css",
+              "src/css/responsive.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/js/jquery-2.2.4.min.js",
+              "src/js/bootstrap.min.js",
+              "src/js/owl-carousel/owl.carousel.js",
+              "src/js/themejs/libs.js",
+              "src/js/unveil/jquery.unveil.js",
+              "src/js/countdown/jquery.countdown.min.js",
+              "src/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js",
+              "src/js/datetimepicker/moment.js",
+              "src/js/datetimepicker/bootstrap-datetimepicker.min.js",
+              "src/js/jquery-ui/jquery-ui.min.js",
+              "src/js/modernizr/modernizr-2.6.2.min.js",
+              "src/js/minicolors/jquery.miniColors.min.js",
+              "src/js/themejs/application.js",
+              "src/js/themejs/homepage.js",
+              "src/js/themejs/toppanel.js",
+              "src/js/themejs/so_megamenu.js",
+              "src/js/themejs/addtocart.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

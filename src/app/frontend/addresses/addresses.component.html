@@ -1,0 +1,143 @@
+<ul class="breadcrumb">
+  <li><a [routerLink]="['']"><i class="fa fa-home"></i></a></li>
+  <li><a [routerLink]="['','my-account']">Account</a></li>
+  <li><a>Addresses</a></li>
+</ul>
+
+<div class="row">
+  <!--Middle Part Start-->
+  <div id="content" class="col-sm-9">
+
+    <table class="table">
+      <tr>
+        <td class="text-left">
+          <h2 class="title">Addresses</h2>
+        </td>
+
+        <td class="text-right">
+          <button class="btn btn-primary" (click)="addressForm(addressFormTemplate)">Add Address</button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <td class="text-center">Address</td>
+          <td class="text-center">Zip Code</td>
+          <td class="text-center">City</td>
+          <td class="text-center">State</td>
+          <td class="text-center">Country</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let addr of addresses">
+          <td class="text-center">
+            {{addr.address}}
+          </td>
+          <td class="text-center">{{addr.address2}}</td>
+          <td class="text-center">{{addr.city}}</td>
+          <td class="text-center">{{addr.zipcode}}</td>
+          <td class="text-center">{{addr.state}}</td>
+
+          <td class="text-center">
+            <button class="btn btn-info" (click)="addressForm(addressFormTemplate,addr)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-info" (click)="deleteAddress(addr)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!--Middle Part End-->
+  <!--Right Part Start -->
+
+  <app-account-sidebar></app-account-sidebar>
+
+
+  <!--Right Part End -->
+</div>
+<br/>
+
+<ng-template #addressFormTemplate>
+  <div class="modal-header mfp-close-btn-in">
+    <h2 class="modal-title title">Add a category</h2>
+    <button type="button" class="mfp-close" (click)="cancel()">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <form [formGroup]="form">
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="address">Address</label>
+          <div class="col-md-8">
+            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address"
+                   [formControlName]="'address'" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="address2">Address 2</label>
+          <div class="col-md-8">
+            <input type="text" id="address2" name="address2" class="form-control" placeholder="Enter Address 2"
+                   [formControlName]="'address2'"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="city">City</label>
+          <div class="col-md-8">
+            <input type="text" id="city" name="city" class="form-control" placeholder="Enter City"
+                   [formControlName]="'city'" required/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="state">State</label>
+          <div class="col-md-8">
+            <input type="text" id="state" name="state" class="form-control" placeholder="Enter State"
+                   [formControlName]="'state'" required/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="zipcode">Zip Code</label>
+          <div class="col-md-8">
+            <input type="text" id="zipcode" name="zipcode" class="form-control" placeholder="Enter ZipCode"
+                   [formControlName]="'zipcode'" required/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="country">Country</label>
+          <div class="col-md-8">
+            <input type="text" id="country" name="country" class="form-control" placeholder="Enter Country"
+                   [formControlName]="'country'" required/>
+          </div>
+        </div>
+
+
+        <div class="form-group"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="saveAddress()">Save</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+
+
+</ng-template>
+
